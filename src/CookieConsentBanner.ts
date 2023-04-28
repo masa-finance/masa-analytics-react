@@ -1,3 +1,5 @@
+// Add CookieConsentBanner component for displaying a cookie consent banner. This component manages the visibility of the banner based on the user's consent status, which is stored in a 'userConsent' cookie using the 'cookieUtils' module. The component also accepts optional callbacks for handling the user's acceptance or rejection of cookies. By default, the banner displays a message indicating that cookies are used to improve the user's experience, along with buttons to accept or decline. When the user clicks accept, the 'userConsent' cookie is set with an expiration date of 365 days, and the provided 'onAccept' callback is executed. When the user clicks decline, the 'userConsent' cookie is set to 'false', and the provided 'onDecline' callback is executed. This implementation uses TypeScript interfaces to define the prop types for the 'CookieConsentBanner' component for better type safety.
+
 import React, { useState, useEffect } from 'react';
 import { setCookie, getCookie } from './cookieUtils';
 
