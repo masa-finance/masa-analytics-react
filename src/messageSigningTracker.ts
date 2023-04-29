@@ -1,8 +1,5 @@
-// src/messageSigningTracker.ts
-
-// Import required libraries
 import axios from 'axios';
-import { ethers } from 'ethers';
+import { ethers, Provider } from 'ethers'; // Include the Provider import
 
 // Define the structure of the event data for message signing
 export interface MessageSigningEventData {
@@ -14,7 +11,7 @@ export interface MessageSigningEventData {
 
 // A function to sign a message and track the event
 export async function signMessageAndTrack(
-  provider: ethers.providers.Web3Provider, // The ethers.js provider object
+  provider: Provider, // Use Provider instead of ethers.providers.Web3Provider
   signer: ethers.Signer, // The signer object representing the user's Ethereum wallet
   message: string, // The message to be signed
   apiUrl: string // The API URL where the event data will be sent
