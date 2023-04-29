@@ -1,5 +1,5 @@
 {
-  "name": "react-cookie-consent-banner",
+  "name": "zksbt-cookie",
   "version": "1.0.0",
   "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
   "main": "lib/index.js",
@@ -37,33 +37,5 @@
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
-}
-
-
-
-{
-  "name": "zksbt-cookie",
-  "version": "1.0.0",
-  "description": "zkSTB 🍪",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/masa-finance/zksbt-cookie.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/masa-finance/zksbt-cookie/issues"
-  },
-  "homepage": "https://github.com/masa-finance/zksbt-cookie#readme",
-  "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "typescript": "^5.0.4"
   }
 }
