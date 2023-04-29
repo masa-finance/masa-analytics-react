@@ -54,7 +54,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   return (
     <div>
       <p>
-        {"We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies."}
+        We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.
       </p>
       <button onClick={handleAccept}>Accept</button>
       <button onClick={handleDecline}>Decline</button>
