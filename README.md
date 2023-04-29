@@ -66,8 +66,18 @@ These events can be used to monitor user interactions with your website, helping
 
 ## Installation
 
+You can install the `zksbt-cookie` package using either npm or yarn:
+
+### Using npm
+
 ```bash
 npm install zksbt-cookie
+```
+
+### Using yarn
+
+```bash
+yarn add zksbt-cookie
 ```
 
 ## Usage
