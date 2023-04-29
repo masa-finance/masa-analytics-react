@@ -1,45 +1,46 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  // The entry point of your library (in this case, the main export file)
-  entry: './src/index.ts',
-
-  // The mode of the build process: 'production' will minify the output
+  // Set the mode to production to enable various optimizations like minification
   mode: 'production',
-
-  // The module rules define how different file types are processed
+  // Entry point for the webpack bundling process
+  entry: './dist/index.js',
+  // Output configuration for the bundled file
+  output: {
+    // The filename of the bundled file
+    filename: 'zksbt-cookie.min.js',
+    // The path where the bundled file will be saved
+    path: path.resolve(__dirname, 'dist'),
+    // The name of the library when used as a script
+    library: 'zksbtCookie',
+    // The type of module definition to use
+    libraryTarget: 'umd',
+    // Ensures that the library works with different environments (Node.js, browser)
+    globalObject: 'this',
+  },
+  // Optimization settings for minimizing the output bundle
+  optimization: {
+    // Enable minimization
+    minimize: true,
+    // Use TerserPlugin to minify the JavaScript code
+    minimizer: [new TerserPlugin()],
+  },
+  // Module rules for handling different types of files
   module: {
     rules: [
       {
-        // The regex to match TypeScript files
+        // Test for TypeScript files
         test: /\.tsx?$/,
-
-        // Use the 'ts-loader' to transpile TypeScript files
+        // Use ts-loader to transpile TypeScript files to JavaScript
         use: 'ts-loader',
-
-        // Exclude the 'node_modules' folder from the transpilation process
+        // Exclude the node_modules folder from the bundling process
         exclude: /node_modules/,
       },
     ],
   },
-
-  // Define which file extensions should be resolved by Webpack
+  // File extensions that webpack will resolve automatically
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  },
-
-  // Configure the output properties
-  output: {
-    // The name of the output file
-    filename: 'zksbt-cookie.bundle.js',
-
-    // The output directory for the bundled file
-    path: path.resolve(__dirname, 'dist'),
-
-    // The name of the global variable that users can use to access your package
-    library: 'zksbtCookie',
-
-    // The library target format: 'umd' works with both CommonJS and AMD module systems
-    libraryTarget: 'umd',
   },
 };
