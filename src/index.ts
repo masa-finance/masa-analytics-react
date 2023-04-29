@@ -9,3 +9,5 @@ export { setCookie, getCookie, deleteCookie } from './cookieUtils';
 // Export the signMessageAndTrack function and the MessageSigningEventData interface
 // for tracking signed messages and sending event data to an API
 export { signMessageAndTrack, MessageSigningEventData } from './messageSigningTracker';
+
+export { trackPageVisit, PageVisitEventData } from './pageVisitTracker';
