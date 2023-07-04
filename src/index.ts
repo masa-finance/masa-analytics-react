@@ -1,10 +1,10 @@
 import CookieConsentBanner from "./CookieConsentBanner";
-import { setCookie, getCookie } from "./cookieUtils";
+import { getCookie, setCookie } from "./cookieUtils";
 import {
-  signMessageAndTrack,
   MessageSigningEventData,
+  signMessageAndTrack,
 } from "./messageSigningTracker";
-import { trackPageVisit, PageVisitEventData } from "./pageVisitTracker";
+import { PageVisitEventData, trackPageVisit } from "./pageVisitTracker";
 
 export {
   CookieConsentBanner,

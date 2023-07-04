@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { setCookie, getCookie } from "./cookieUtils";
+import React, { useEffect, useState } from "react";
+
+import { getCookie, setCookie } from "./cookieUtils";
 
 // Define the prop types for the CookieConsentBanner component.
 interface CookieConsentBannerProps {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ethers, Signer, Provider } from "ethers"; // Include the Signer and Provider imports
+import { ethers, Provider } from "ethers"; // Include the Signer and Provider imports
 
 // Define the structure of the event data for message signing
 export interface MessageSigningEventData {

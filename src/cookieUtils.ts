@@ -8,7 +8,7 @@
 export const setCookie = (name: string, value: string, days: number): void => {
   let expires = "";
   if (days) {
-    let date = new Date();
+    const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     expires = "; expires=" + date.toUTCString();
   }
@@ -22,8 +22,8 @@ export const setCookie = (name: string, value: string, days: number): void => {
  * @returns {string} - The value of the cookie, or an empty string if the cookie is not found.
  */
 export const getCookie = (name: string): string => {
-  let nameEQ = name + "=";
-  let ca = document.cookie.split(";");
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     // Remove any leading whitespace from the current cookie string.

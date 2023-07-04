@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "react": {
+      "version": "18"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "simple-import-sort",
+    "react-hooks"
+  ],
+  "rules": {
+    "simple-import-sort/imports": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "@typescript-eslint/prefer-as-const": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
+  }
+}
