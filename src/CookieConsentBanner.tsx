@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { setCookie, getCookie } from './cookieUtils';
+import React, { useState, useEffect } from "react";
+import { setCookie, getCookie } from "./cookieUtils";
 
 // Define the prop types for the CookieConsentBanner component.
 interface CookieConsentBannerProps {
@@ -24,9 +24,9 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
 
   // Check the user's consent status when the component mounts.
   useEffect(() => {
-    const consent = getCookie('userConsent');
+    const consent = getCookie("userConsent");
     // If the userConsent cookie is not set, display the consent banner.
-    if (consent === '') {
+    if (consent === "") {
       setVisible(true);
     }
   }, []);
@@ -34,14 +34,14 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   // Handle the user clicking the "Accept" button.
   const handleAccept = () => {
     setVisible(false);
-    setCookie('userConsent', 'true', 365);
+    setCookie("userConsent", "true", 365);
     onAccept();
   };
 
   // Handle the user clicking the "Decline" button.
   const handleDecline = () => {
     setVisible(false);
-    setCookie('userConsent', 'false', 365);
+    setCookie("userConsent", "false", 365);
     onDecline();
   };
 
@@ -54,7 +54,8 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   return (
     <div>
       <p>
-        We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.
+        We use cookies to improve your experience on our website. By browsing
+        this website, you agree to our use of cookies.
       </p>
       <button onClick={handleAccept}>Accept</button>
       <button onClick={handleDecline}>Decline</button>

@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "prettier": "prettier ./src --write",
     "build": "tsc -p tsconfig.json",
     "bundle": "webpack",
     "prepare": "npm run build"
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "prettier": "^2.8.8",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",

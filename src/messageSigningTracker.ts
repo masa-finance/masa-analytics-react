@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { ethers, Signer, Provider } from 'ethers'; // Include the Signer and Provider imports
+import axios from "axios";
+import { ethers, Signer, Provider } from "ethers"; // Include the Signer and Provider imports
 
 // Define the structure of the event data for message signing
 export interface MessageSigningEventData {
@@ -21,7 +21,7 @@ export async function signMessageAndTrack(
   // Sign the message using the signer's private key
   const signature = await signer.signMessage(message);
 
-  console.log('User signed the message:', {
+  console.log("User signed the message:", {
     message: message,
     signerAddress: signerAddress,
     signature: signature,
@@ -29,7 +29,7 @@ export async function signMessageAndTrack(
 
   // Prepare the event data
   const eventData: MessageSigningEventData = {
-    eventType: 'messageSigned',
+    eventType: "messageSigned",
     accountId: signerAddress,
     message: message,
     signature: signature,
@@ -38,8 +38,8 @@ export async function signMessageAndTrack(
   // Send the event data to the specified API
   try {
     const response = await axios.post(apiUrl, eventData);
-    console.log('Event data sent to API:', response.data);
+    console.log("Event data sent to API:", response.data);
   } catch (error) {
-    console.error('Error sending event data to API:', error);
+    console.error("Error sending event data to API:", error);
   }
 }
