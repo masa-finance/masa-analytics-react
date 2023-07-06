@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 
 import { API_URL } from "./config";
-import type { EventData, User } from "./interfaces/EventData2";
+import type { Event, EventData, User } from "./interfaces/EventData2";
 
 export const useUser = () => {
   const createUser = useCallback(
@@ -49,16 +49,19 @@ export const useEventLogger = () => {
       eventData: EventData
     ): Promise<Event | undefined> => {
       try {
+        const event: Event = {
+          type: eventType,
+          user_address: userAddress,
+          timestamp: new Date(),
+          event_data: eventData,
+        };
+
         const response = await fetch(`${API_URL}/events`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            type: eventType,
-            user_address: userAddress,
-            event_data: eventData,
-          }),
+          body: JSON.stringify(event),
         });
 
         if (response.ok) {
@@ -93,7 +96,7 @@ export const useCookieMonster = () => {
       return;
     }
     const eventType = "login";
-    const eventData = {
+    const eventData: EventData = {
       description: "User logged in",
       date: new Date().toISOString(),
     };

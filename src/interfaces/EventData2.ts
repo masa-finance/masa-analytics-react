@@ -5,10 +5,8 @@ export interface User {
 export interface Event {
   type: string;
   user_address: string;
-  event_data: {
-    description: string;
-    date: string;
-  };
+  timestamp: Date;
+  event_data: EventData;
 }
 
 export interface EventData {
