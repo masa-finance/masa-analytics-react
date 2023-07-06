@@ -2,8 +2,7 @@
   "name": "@masa-finance/zksbt-cookie",
   "version": "0.0.2",
   "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/zksbt-cookie.min.js",
   "scripts": {
     "prettier": "prettier ./src --write",
     "lint": "eslint ./src",
@@ -11,6 +10,9 @@
     "bundle": "webpack",
     "prepare": "npm run build"
   },
+  "files": [
+    "./dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/masa-finance/zksbt-cookie.git"
