@@ -1,13 +1,7 @@
 import axios from "axios";
-import { ethers, Provider } from "ethers"; // Include the Signer and Provider imports
+import { ethers, Provider } from "ethers";
 
-// Define the structure of the event data for message signing
-export interface MessageSigningEventData {
-  eventType: string;
-  accountId: string;
-  message: string;
-  signature: string;
-}
+import type { MessageSigningEventData } from "./interfaces/EventData"; // Include the Signer and Provider imports
 
 // A function to sign a message and track the event
 export async function signMessageAndTrack(

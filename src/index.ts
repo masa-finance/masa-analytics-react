@@ -1,17 +1,27 @@
 import CookieConsentBanner from "./CookieConsentBanner";
-import { getCookie, setCookie } from "./cookieUtils";
-import {
+import { useCookieMonster, useEventLogger, useUser } from "./cookiemonster";
+import type {
   MessageSigningEventData,
-  signMessageAndTrack,
-} from "./messageSigningTracker";
-import { PageVisitEventData, trackPageVisit } from "./pageVisitTracker";
+  PageVisitEventData,
+} from "./interfaces/EventData";
+import { signMessageAndTrack } from "./messageSigningTracker";
+import { trackPageVisit } from "./pageVisitTracker";
+import { getCookie, setCookie } from "./utils/cookieUtils";
 
 export {
+  // consent
   CookieConsentBanner,
+  // cookie handling
   setCookie,
   getCookie,
+  // signing
   signMessageAndTrack,
   MessageSigningEventData,
+  // tracking
   trackPageVisit,
   PageVisitEventData,
+  // new cookie monster
+  useUser,
+  useEventLogger,
+  useCookieMonster,
 };

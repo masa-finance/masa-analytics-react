@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getCookie, setCookie } from "./cookieUtils";
+import { getCookie, setCookie } from "./utils/cookieUtils";
 
 // Define the prop types for the CookieConsentBanner component.
 interface CookieConsentBannerProps {
@@ -17,8 +17,8 @@ interface CookieConsentBannerProps {
  * the user's acceptance or rejection of cookies.
  */
 const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
-  onAccept = () => {},
-  onDecline = () => {},
+  onAccept,
+  onDecline,
 }) => {
   // Create a state to control the visibility of the consent banner.
   const [visible, setVisible] = useState(false);
@@ -36,14 +36,14 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   const handleAccept = () => {
     setVisible(false);
     setCookie("userConsent", "true", 365);
-    onAccept();
+    onAccept?.();
   };
 
   // Handle the user clicking the "Decline" button.
   const handleDecline = () => {
     setVisible(false);
     setCookie("userConsent", "false", 365);
-    onDecline();
+    onDecline?.();
   };
 
   // If the consent banner is not visible, render nothing.

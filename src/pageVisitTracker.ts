@@ -1,18 +1,13 @@
 import axios from "axios";
 
-// Interface for page visit event data
-export interface PageVisitEventData {
-  eventType: string;
-  accountId: string;
-  url: string;
-}
+import type { PageVisitEventData } from "./interfaces/EventData";
 
 // Function to send a page visit event to your API
 export const trackPageVisit = (
   accountId: string,
   apiUrl: string,
   pageName?: string,
-  additionalData?: Record<string, any>
+  additionalData?: Record<string, object>
 ) => {
   const pageUrl = window.location.href;
   const eventData: PageVisitEventData = {
