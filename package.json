@@ -1,6 +1,6 @@
 {
   "name": "@masa-finance/zksbt-cookie",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
   "main": "dist/zksbt-cookie.min.js",
   "scripts": {
