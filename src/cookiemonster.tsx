@@ -85,7 +85,6 @@ export const useEventLogger = () => {
 };
 
 export const useCookieMonster = () => {
-  const { createUser } = useUser();
   const { logEvent } = useEventLogger();
 
   const executeScript = async (userAddress: string) => {
@@ -102,7 +101,6 @@ export const useCookieMonster = () => {
     };
 
     try {
-      await createUser(userAddress);
       await logEvent(userAddress, eventType, eventData);
     } catch (error) {
       console.error("Error in script execution:", error);
