@@ -38,7 +38,12 @@ export const useCookieMonster = ({
       };
 
       try {
-        await logEvent("pageView", address, pageViewEventData);
+        await logEvent(
+          "pageView",
+          address,
+          pageViewEventData,
+          "tracking/track-page-view"
+        );
       } catch (error) {
         console.error("firePageViewEvent():", error);
       }

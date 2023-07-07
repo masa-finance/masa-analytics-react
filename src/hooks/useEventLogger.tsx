@@ -8,7 +8,8 @@ export const useEventLogger = () => {
     async (
       type: string,
       user_address: string,
-      event_data: BaseEventData
+      event_data: BaseEventData,
+      endpoint = "events"
     ): Promise<Event | undefined> => {
       try {
         const event: Event = {
@@ -18,7 +19,7 @@ export const useEventLogger = () => {
           event_data,
         };
 
-        const response = await fetch(`${API_URL}/events`, {
+        const { ok, json, statusText } = await fetch(`${API_URL}/${endpoint}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -26,12 +27,12 @@ export const useEventLogger = () => {
           body: JSON.stringify(event),
         });
 
-        if (response.ok) {
-          const event: Event = await response.json();
+        if (ok) {
+          const event: Event = await json();
           console.log("Event logged successfully");
           return event;
         } else {
-          console.error("API error: " + response.statusText);
+          console.error("API error: " + statusText);
         }
       } catch (error) {
         console.error("Error logging event:", error);
