@@ -12,3 +12,23 @@ export interface PageVisitEventData {
   accountId: string;
   url: string;
 }
+
+export interface Event {
+  type: string;
+  user_address: string;
+  timestamp: Date;
+  event_data: BaseEventData | null;
+}
+
+export interface BaseEventData {
+  client_app: string;
+  client_name: string;
+}
+
+export interface LoginEventData extends BaseEventData {
+  description: string;
+}
+
+export interface PageViewEventData extends BaseEventData {
+  page: string;
+}

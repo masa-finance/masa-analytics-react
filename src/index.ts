@@ -1,5 +1,7 @@
 import CookieConsentBanner from "./CookieConsentBanner";
-import { useCookieMonster, useEventLogger, useUser } from "./cookiemonster";
+import { useCookieMonster } from "./hooks/useCookieMonster";
+import { useEventLogger } from "./hooks/useEventLogger";
+import { useUser } from "./hooks/useUser";
 import type {
   MessageSigningEventData,
   PageVisitEventData,
