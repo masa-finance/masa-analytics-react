@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useCallback } from "react";
 
 import { API_URL } from "../config";
@@ -25,18 +26,19 @@ export const useEventLogger = () => {
           event_data,
         };
 
-        const { ok, json, statusText } = await fetch(`${API_URL}/${endpoint}`, {
-          method: "POST",
+        const {
+          status,
+          statusText,
+          data: responseData,
+        } = await axios.post<Event>(`${API_URL}/${endpoint}`, event, {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(event),
         });
 
-        if (ok) {
-          const event: Event = await json();
+        if (status === 200 || status === 202) {
           console.log("Event logged successfully");
-          return event;
+          return responseData;
         } else {
           console.error("API error: " + statusText);
         }
