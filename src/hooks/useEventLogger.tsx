@@ -2,15 +2,21 @@ import { useCallback } from "react";
 
 import { API_URL } from "../config";
 import type { BaseEventData, Event } from "../interfaces/EventData";
+import { EventTypes } from "../interfaces/EventData";
 
 export const useEventLogger = () => {
   const logEvent = useCallback(
-    async (
-      type: string,
-      user_address: string,
-      event_data: BaseEventData,
-      endpoint = "events"
-    ): Promise<Event | undefined> => {
+    async ({
+      type,
+      user_address,
+      event_data,
+      endpoint = "events",
+    }: {
+      type: EventTypes;
+      user_address?: string;
+      event_data: BaseEventData;
+      endpoint?: string;
+    }): Promise<Event | undefined> => {
       try {
         const event: Event = {
           type,

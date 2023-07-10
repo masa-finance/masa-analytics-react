@@ -13,15 +13,19 @@ export const useCookieMonster = ({
   const { logEvent } = useEventLogger();
 
   const fireLoginEvent = useCallback(
-    async (userAddress: string) => {
-      const loginEventData: LoginEventData = {
+    async (user_address: string) => {
+      const event_data: LoginEventData = {
         description: "User logged in",
         client_app: clientApp,
         client_name: clientName,
       };
 
       try {
-        await logEvent("login", userAddress, loginEventData);
+        await logEvent({
+          type: "login",
+          user_address,
+          event_data,
+        });
       } catch (error) {
         console.error("fireLoginEvent():", error);
       }
@@ -30,20 +34,20 @@ export const useCookieMonster = ({
   );
 
   const firePageViewEvent = useCallback(
-    async (address: string, page: string) => {
-      const pageViewEventData: PageViewEventData = {
+    async (page: string, user_address?: string) => {
+      const event_data: PageViewEventData = {
         client_app: clientApp,
         client_name: clientName,
         page,
       };
 
       try {
-        await logEvent(
-          "pageView",
-          address,
-          pageViewEventData,
-          "tracking/track-page-view"
-        );
+        await logEvent({
+          type: "pageView",
+          user_address,
+          event_data,
+          endpoint: "tracking/track-page-view",
+        });
       } catch (error) {
         console.error("firePageViewEvent():", error);
       }

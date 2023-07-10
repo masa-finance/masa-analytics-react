@@ -6,6 +6,8 @@ export interface MessageSigningEventData {
   signature: string;
 }
 
+export type EventTypes = "pageView" | "login" | "mint" | "connectWallet";
+
 // Interface for page visit event data
 export interface PageVisitEventData {
   eventType: string;
@@ -14,8 +16,8 @@ export interface PageVisitEventData {
 }
 
 export interface Event {
-  type: string;
-  user_address: string;
+  type: EventTypes;
+  user_address?: string;
   timestamp: Date;
   event_data: BaseEventData | null;
 }
