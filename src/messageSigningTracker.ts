@@ -8,7 +8,7 @@ export async function signMessageAndTrack(
   provider: Provider, // Use Provider instead of ethers.providers.Web3Provider
   signer: ethers.Signer, // The signer object representing the user's Ethereum wallet
   message: string, // The message to be signed
-  apiUrl: string // The API URL where the event data will be sent
+  apiUrl: string, // The API URL where the event data will be sent
 ) {
   // Get the Ethereum account address of the signer
   const signerAddress = await signer.getAddress();

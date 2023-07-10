@@ -33,7 +33,7 @@ export const useUser = () => {
         throw error;
       }
     },
-    []
+    [],
   );
 
   return {

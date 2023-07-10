@@ -7,7 +7,7 @@ export const trackPageVisit = (
   accountId: string,
   apiUrl: string,
   pageName?: string,
-  additionalData?: Record<string, object>
+  additionalData?: Record<string, object>,
 ) => {
   const pageUrl = window.location.href;
   const eventData: PageVisitEventData = {

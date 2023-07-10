@@ -45,7 +45,7 @@ export const useEventLogger = () => {
         throw error;
       }
     },
-    []
+    [],
   );
 
   return {

@@ -34,3 +34,8 @@ export interface LoginEventData extends BaseEventData {
 export interface PageViewEventData extends BaseEventData {
   page: string;
 }
+
+export interface MintEventData extends BaseEventData {
+  contract_address: string;
+  network: string;
+}
