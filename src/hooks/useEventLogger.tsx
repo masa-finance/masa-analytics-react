@@ -36,8 +36,15 @@ export const useEventLogger = () => {
           },
         });
 
-        if (status === 200 || status === 202) {
-          console.log("Event logged successfully");
+        if (
+          // ok
+          status === 200 ||
+          // Created
+          status === 201 ||
+          // Accepted
+          status === 202
+        ) {
+          console.log(`${type} Event logged successfully`);
           return responseData;
         } else {
           console.error("API error: " + statusText);
@@ -47,7 +54,7 @@ export const useEventLogger = () => {
         throw error;
       }
     },
-    [],
+    []
   );
 
   return {
