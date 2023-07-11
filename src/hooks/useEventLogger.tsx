@@ -11,12 +11,12 @@ export const useEventLogger = () => {
       type,
       user_address,
       event_data,
-      endpoint = "events",
+      endpoint,
     }: {
       type: EventTypes;
       user_address?: string;
       event_data: BaseEventData;
-      endpoint?: string;
+      endpoint: string;
     }): Promise<Event | undefined> => {
       try {
         const event: Event = {
@@ -54,7 +54,7 @@ export const useEventLogger = () => {
         throw error;
       }
     },
-    []
+    [],
   );
 
   return {

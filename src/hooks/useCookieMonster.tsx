@@ -40,6 +40,7 @@ export const useCookieMonster = ({
           type: "login",
           user_address,
           event_data,
+          endpoint: "events/create",
         });
       } catch (error) {
         console.error("fireLoginEvent():", error);
