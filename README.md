@@ -1,143 +1,125 @@
 # zkSTB 🍪
 
-A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript. This package helps you comply with GDPR requirements by informing users about the use of cookies on your website and allowing them to accept or decline.
+A customizable, easy-to-use React component for connecting to cookie monster, written in TypeScript.
 
 ## Features
 
 - Easy integration with any React application
-- Customizable event handling for accepting or declining cookies
+- Customizable event handling
 - Written in TypeScript for better type safety and developer experience
-- Includes utility functions for handling cookies
-- Supports Ethereum message signing and page visit tracking
 
 ## Events Tracking and Usage
 
-This package provides built-in support for tracking two types of events: Ethereum message signing and page visits. These events can be easily integrated into your application to gather insights about user interactions.
+This package provides built-in support for tracking different types of events:
 
-### Ethereum Message Signing Event
+- [Page Visit Event](#page-visit-event)
+- [Login Event](#login-event)
+- [Mint Event](#mint-event)
 
-`signMessageAndTrack` function is provided to sign Ethereum messages and track the event. It takes the following parameters:
-
-- `provider`: An instance of `ethers.Provider` or any compatible provider.
-- `signer`: An instance of `ethers.Signer` representing the user's Ethereum wallet.
-- `message`: The message to be signed.
-- `apiUrl`: The API URL where the event data will be sent.
-
-#### Usage
-
-```javascript
-import { signMessageAndTrack } from 'zksbt-cookie';
-import { ethers } from 'ethers';
-
-// Set up the provider and signer
-const provider = new ethers.providers.JsonRpcProvider('https://mainnet.infura.io/v3/YOUR_API_KEY');
-const signer = provider.getSigner();
-
-// Sign a message and track the event
-const message = 'Hello, World!';
-const apiUrl = 'https://your-api.example.com/events';
-signMessageAndTrack(provider, signer, message, apiUrl);
-```
+These events can be easily integrated into your application to gather insights about user interactions.
 
 ### Page Visit Event
 
-`trackPageVisit` function is provided to send a page visit event to your API. It takes the following parameters:
+`firePageViewEvent` function is provided to send a page visit event to your API. It takes the following parameters:
 
-- `accountId`: A unique identifier for the user, such as a user ID or Ethereum address.
-- `apiUrl`: The API URL where the event data will be sent.
-- `pageName` (optional): A custom name for the page being visited.
-- `additionalData` (optional): Additional data to be included in the event payload.
+- `page`: A unique identifier of the page visited.
+- `user_address`: The users wallet address.
 
 #### Usage
 
-```javascript
-import { trackPageVisit } from 'zksbt-cookie';
+```typescript
+import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+
+const { firePageViewEvent } = useCookieMonster({
+  clientApp: "My App",
+  clientName: "My Company Name",
+});
 
 // Track a page visit event
-const accountId = '0x742d35Cc6634C0532925a3b844Bc454e4438f44e';
-const apiUrl = 'https://your-api.example.com/events';
-const pageName = 'Homepage';
-const additionalData = { referrer: document.referrer };
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const page = "https://your-site.example.com/page1";
 
-trackPageVisit(accountId, apiUrl, pageName, additionalData);
+void firePageViewEvent(page, user_address);
+```
+
+### Login Event
+
+`fireLoginEvent` function is provided to send a login event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+
+#### Usage
+
+```typescript
+import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+
+const { fireLoginEvent } = useCookieMonster({
+  clientApp: "My App",
+  clientName: "My Company Name",
+});
+
+// Track a login event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+
+void fireLoginEvent(user_address);
+```
+
+### Mint Event
+
+`fireMintEvent` function is provided to send a mint event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+
+const { fireMintEvent } = useCookieMonster({
+  clientApp: "My App",
+  clientName: "My Company Name",
+});
+
+// Track a mint event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const token_name = "My SBT Project";
+const ticker = "MSP";
+const token_type = "SBT";
+
+void fireMintEvent(
+  user_address,
+  network,
+  contract_address,
+  token_name,
+  ticker,
+  token_type
+);
 ```
 
 These events can be used to monitor user interactions with your website, helping you make data-driven decisions and improve the user experience.
 
 ## Installation
 
-You can install the `zksbt-cookie` package using either npm or yarn:
+You can install the `@masa-finance/zksbt-cookie` package using either npm or yarn:
 
 ### Using npm
 
 ```bash
-npm install zksbt-cookie
+npm install @masa-finance/zksbt-cookie
 ```
 
 ### Using yarn
 
 ```bash
-yarn add zksbt-cookie
+yarn add @masa-finance/zksbt-cookie
 ```
-
-## Usage
-
-### Basic Example
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { CookieConsentBanner } from 'zksbt-cookie';
-
-function App() {
-  return (
-    <div>
-      <h1>Welcome to My Website</h1>
-      <CookieConsentBanner />
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-### Custom Event Handling
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { CookieConsentBanner } from 'zksbt-cookie';
-
-function onAccept() {
-  console.log('User accepted cookies.');
-}
-
-function onDecline() {
-  console.log('User declined cookies.');
-}
-
-function App() {
-  return (
-    <div>
-      <h1>Welcome to My Website</h1>
-      <CookieConsentBanner onAccept={onAccept} onDecline={onDecline} />
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-## Repo Structure and Files
-
-- `src/`: The source code for the package.
-  - `CookieConsentBanner.tsx`: The main React component for the cookie consent banner.
-  - `cookieUtils.ts`: Utility functions for setting, getting, and deleting cookies.
-  - `messageSigningTracker.ts`: Functions for signing Ethereum messages and tracking events.
-  - `pageVisitTracker.ts`: Functions for tracking page visits and sending event data to an API.
-  - `index.ts`: Exports all the components and functions from the package.
-- `tsconfig.json`: TypeScript configuration file for compiling the package.
-- `package.json`: Defines the package metadata, dependencies, and build scripts.
 
 ## Publishing to npm
 
@@ -187,7 +169,3 @@ For bug reports and feature requests, please [create an issue](https://github.co
 `zksbt-cookie` is released under the [MIT License](LICENSE).
 
 By adding these sections, your README will be more comprehensive and provide all the necessary information for developers to use, contribute to, and understand the licensing of your package.
-
-
-
-
