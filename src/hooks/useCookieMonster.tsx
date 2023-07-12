@@ -20,6 +20,9 @@ export const useCookieMonster = ({
     user_address: string,
     network: string,
     contract_address: string,
+    token_name: string,
+    ticker: string,
+    token_type: string,
   ) => void;
 } => {
   const { logEvent } = useEventLogger();
@@ -78,10 +81,20 @@ export const useCookieMonster = ({
    * Fire an event once a user tries to mint a token
    */
   const fireMintEvent = useCallback(
-    async (user_address: string, network: string, contract_address: string) => {
+    async (
+      user_address: string,
+      network: string,
+      contract_address: string,
+      token_name: string,
+      ticker: string,
+      token_type: string,
+    ) => {
       const event_data: MintEventData = {
         client_app: clientApp,
         client_name: clientName,
+        token_name,
+        ticker,
+        token_type,
         network,
         contract_address,
       };
@@ -91,7 +104,7 @@ export const useCookieMonster = ({
           type: "mint",
           user_address,
           event_data,
-          endpoint: "tracking/track-mint",
+          endpoint: "events/create",
         });
       } catch (error) {
         console.error("fireMintEvent():", error);

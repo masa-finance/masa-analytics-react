@@ -21,6 +21,9 @@ export interface PageViewEventData extends BaseEventData {
 }
 
 export interface MintEventData extends BaseEventData {
-  contract_address: string;
+  token_name: string;
+  ticker: string;
+  token_type: string;
   network: string;
+  contract_address: string;
 }
