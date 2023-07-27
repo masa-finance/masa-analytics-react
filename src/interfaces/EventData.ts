@@ -16,7 +16,7 @@ export interface LoginEventData extends BaseEventData {
   description: string;
 }
 
-export interface ConnectWalletEventData extends BaseEventData {}
+// export interface ConnectWalletEventData extends BaseEventData {}
 export interface PageViewEventData extends BaseEventData {
   page: string;
 }
