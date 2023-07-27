@@ -22,8 +22,9 @@ export const useCookieMonster = ({
     contract_address: string,
     token_name: string,
     ticker: string,
-    token_type: string,
+    token_type: string
   ) => void;
+  // fireConnectWalletEvent: (user_address: string) => void;
 } => {
   const { logEvent } = useEventLogger();
 
@@ -49,7 +50,7 @@ export const useCookieMonster = ({
         console.error("fireLoginEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   /**
@@ -74,7 +75,7 @@ export const useCookieMonster = ({
         console.error("firePageViewEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   /**
@@ -88,6 +89,11 @@ export const useCookieMonster = ({
       token_name: string,
       ticker: string,
       token_type: string,
+      mint_fee?: string,
+      mint_currency?: string,
+      fee_asset?: string,
+      asset_amount?: string,
+      additionalEventData?: Record<string, unknown>
     ) => {
       const event_data: MintEventData = {
         client_app: clientApp,
@@ -97,25 +103,63 @@ export const useCookieMonster = ({
         token_type,
         network,
         contract_address,
+        mint_fee,
+        mint_currency,
+        fee_asset,
+        asset_amount,
       };
 
       try {
         await logEvent({
           type: "mint",
           user_address,
-          event_data,
+          event_data: {
+            ...event_data,
+            ...additionalEventData,
+          },
+
           endpoint: "events/create",
         });
       } catch (error) {
         console.error("fireMintEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
+
+  /**
+   * Fire an event once a user tries to mint a token
+   */
+  // const fireConnectWalletEvent = useCallback(
+  //   async (user_address: string) => {
+  //     const event_data: MintEventData = {
+  //       client_app: clientApp,
+  //       client_name: clientName,
+  //       token_name,
+  //       ticker,
+  //       token_type,
+  //       network,
+  //       contract_address,
+  //     };
+
+  //     try {
+  //       await logEvent({
+  //         type: "connectWallet",
+  //         user_address,
+  //         event_data,
+  //         endpoint: "events/create",
+  //       });
+  //     } catch (error) {
+  //       console.error("fireMintEvent():", error);
+  //     }
+  //   },
+  //   [logEvent, clientName, clientApp]
+  // );
 
   return {
     fireLoginEvent,
     firePageViewEvent,
+    // fireConnectWalletEvent,
     fireMintEvent,
   };
 };
