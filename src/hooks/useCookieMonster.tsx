@@ -22,7 +22,12 @@ export const useCookieMonster = ({
     contract_address: string,
     token_name: string,
     ticker: string,
-    token_type: string
+    token_type: string,
+    mint_fee?: string,
+    mint_currency?: string,
+    fee_asset?: string,
+    asset_amount?: string,
+    additionalEventData?: Record<string, unknown>
   ) => void;
   // fireConnectWalletEvent: (user_address: string) => void;
 } => {
