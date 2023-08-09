@@ -34,5 +34,5 @@ export interface MintEventData extends BaseEventData {
 }
 
 export interface ConnectWalletEventData extends BaseEventData {
-  wallet_name: string;
+  wallet_type: string;
 }

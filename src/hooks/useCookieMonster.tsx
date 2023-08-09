@@ -30,7 +30,7 @@ export const useCookieMonster = ({
     asset_amount?: string,
     additionalEventData?: Record<string, unknown>
   ) => void;
-  fireConnectWalletEvent: (user_address: string, wallet_name: string) => void;
+  fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
   const { logEvent } = useEventLogger();
 
@@ -137,11 +137,11 @@ export const useCookieMonster = ({
    * Fire an event once a user tries to mint a token
    */
   const fireConnectWalletEvent = useCallback(
-    async (user_address: string, wallet_name: string) => {
+    async (user_address: string, wallet_type: string) => {
       const event_data: ConnectWalletEventData = {
         client_app: clientApp,
         client_name: clientName,
-        wallet_name,
+        wallet_type,
         // token_name,
         // ticker,
         // token_type,
