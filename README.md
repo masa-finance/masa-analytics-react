@@ -28,9 +28,9 @@ These events can be easily integrated into your application to gather insights a
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/analytics-react";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { firePageViewEvent } = useCookieMonster({
+const { firePageViewEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });
@@ -51,9 +51,9 @@ void firePageViewEvent(page, user_address);
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/analytics-react";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { fireLoginEvent } = useCookieMonster({
+const { fireLoginEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });
@@ -78,9 +78,9 @@ void fireLoginEvent(user_address);
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/analytics-react";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { fireMintEvent } = useCookieMonster({
+const { fireMintEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });

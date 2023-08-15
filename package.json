@@ -1,9 +1,9 @@
 {
 
-  "name": "@masa-finance/zksbt-cookie",
+  "name": "@masa-finance/analytics-react",
   "version": "0.5.6",
 
-  "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
+  "description": "A customizable, easy-to-use React library for integrating Masa Analytics in your React application, written in TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -22,10 +22,11 @@
   },
   "keywords": [
     "react",
-    "cookie",
-    "consent",
-    "banner",
+    "masa",
+    "analytics",
+    "tracking",
     "gdpr",
+    "web3",
     "typescript"
   ],
   "author": "",

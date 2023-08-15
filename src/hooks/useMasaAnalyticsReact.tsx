@@ -8,7 +8,7 @@ import {
 } from "../interfaces/EventData";
 import { useEventLogger } from "./useEventLogger";
 
-export const useCookieMonster = ({
+export const useMasaAnalyticsReact = ({
   clientApp,
   clientName,
 }: {

@@ -1,8 +1,8 @@
-import { useCookieMonster } from "./hooks/useCookieMonster";
+import { useMasaAnalyticsReact } from "./hooks/useMasaAnalyticsReact";
 import { useEventLogger } from "./hooks/useEventLogger";
 
 export {
-  // new cookie monster
+  // new masa analytics
   useEventLogger,
-  useCookieMonster,
+  useMasaAnalyticsReact,
 };
