@@ -32,3 +32,7 @@ export interface MintEventData extends BaseEventData {
   fee_asset?: string;
   asset_amount?: string;
 }
+
+export interface ConnectWalletEventData extends BaseEventData {
+  wallet_type: string;
+}

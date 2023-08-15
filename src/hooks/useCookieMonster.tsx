@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import {
+  ConnectWalletEventData,
   LoginEventData,
   MintEventData,
   PageViewEventData,
@@ -29,7 +30,7 @@ export const useCookieMonster = ({
     asset_amount?: string,
     additionalEventData?: Record<string, unknown>
   ) => void;
-  // fireConnectWalletEvent: (user_address: string) => void;
+  fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
   const { logEvent } = useEventLogger();
 
@@ -135,36 +136,37 @@ export const useCookieMonster = ({
   /**
    * Fire an event once a user tries to mint a token
    */
-  // const fireConnectWalletEvent = useCallback(
-  //   async (user_address: string) => {
-  //     const event_data: MintEventData = {
-  //       client_app: clientApp,
-  //       client_name: clientName,
-  //       token_name,
-  //       ticker,
-  //       token_type,
-  //       network,
-  //       contract_address,
-  //     };
+  const fireConnectWalletEvent = useCallback(
+    async (user_address: string, wallet_type: string) => {
+      const event_data: ConnectWalletEventData = {
+        client_app: clientApp,
+        client_name: clientName,
+        wallet_type,
+        // token_name,
+        // ticker,
+        // token_type,
+        // network,
+        // contract_address,
+      };
 
-  //     try {
-  //       await logEvent({
-  //         type: "connectWallet",
-  //         user_address,
-  //         event_data,
-  //         endpoint: "events/create",
-  //       });
-  //     } catch (error) {
-  //       console.error("fireMintEvent():", error);
-  //     }
-  //   },
-  //   [logEvent, clientName, clientApp]
-  // );
+      try {
+        await logEvent({
+          type: "connectWallet",
+          user_address,
+          event_data,
+          endpoint: "events/create",
+        });
+      } catch (error) {
+        console.error("fireMintEvent():", error);
+      }
+    },
+    [logEvent, clientName, clientApp]
+  );
 
   return {
     fireLoginEvent,
     firePageViewEvent,
-    // fireConnectWalletEvent,
+    fireConnectWalletEvent,
     fireMintEvent,
   };
 };
