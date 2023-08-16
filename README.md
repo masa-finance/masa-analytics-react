@@ -45,7 +45,7 @@ void firePageViewEvent(page, user_address);
 
 ### Wallet Connect Event
 
-`fireLoginEvent` function is provided to send a wallet connect event to your API. It takes the following parameters:
+`fireConnectWalletEvent` function is provided to send a wallet connect event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
 - `connector`: The users wallet connector. e.g "metamask" "walletconnect"
