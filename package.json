@@ -1,5 +1,5 @@
 {
-  "name": "@masa-finance/zksbt-cookie",
+  "name": "@masa-finance/analytics-react",
   "version": "0.5.6",
   "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masa-finance/zksbt-cookie.git"
+    "url": "git+https://github.com/masa-finance/analytics-react-library.git"
   },
   "keywords": [
     "react",
@@ -29,9 +29,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/masa-finance/zksbt-cookie/issues"
+    "url": "https://github.com/masa-finance/analytics-react-library/issues"
   },
-  "homepage": "https://github.com/masa-finance/zksbt-cookie#readme",
+  "homepage": "https://github.com/masa-finance/analytics-react-library#readme",
   "dependencies": {
     "axios": "^1.4.0",
     "react": "^18.2.0"
