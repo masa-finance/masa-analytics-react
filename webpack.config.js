@@ -9,11 +9,11 @@ module.exports = {
   // Output configuration for the bundled file
   output: {
     // The filename of the bundled file
-    filename: "zksbt-cookie.min.js",
+    filename: "analytics-react.min.js",
     // The path where the bundled file will be saved
     path: path.resolve(__dirname, "dist"),
     // The name of the library when used as a script
-    library: "zksbtCookie",
+    library: "analytics-react",
     // The type of module definition to use
     libraryTarget: "umd",
     // Ensures that the library works with different environments (Node.js, browser)
