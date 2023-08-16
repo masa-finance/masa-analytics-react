@@ -28,7 +28,7 @@ export const useMasaAnalyticsReact = ({
     mint_currency?: string,
     fee_asset?: string,
     asset_amount?: string,
-    additionalEventData?: Record<string, unknown>
+    additionalEventData?: Record<string, unknown>,
   ) => void;
   fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
@@ -56,7 +56,7 @@ export const useMasaAnalyticsReact = ({
         console.error("fireLoginEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp]
+    [logEvent, clientName, clientApp],
   );
 
   /**
@@ -81,7 +81,7 @@ export const useMasaAnalyticsReact = ({
         console.error("firePageViewEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp]
+    [logEvent, clientName, clientApp],
   );
 
   /**
@@ -99,7 +99,7 @@ export const useMasaAnalyticsReact = ({
       mint_currency?: string,
       fee_asset?: string,
       asset_amount?: string,
-      additionalEventData?: Record<string, unknown>
+      additionalEventData?: Record<string, unknown>,
     ) => {
       const event_data: MintEventData = {
         client_app: clientApp,
@@ -130,7 +130,7 @@ export const useMasaAnalyticsReact = ({
         console.error("fireMintEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp]
+    [logEvent, clientName, clientApp],
   );
 
   /**
@@ -160,7 +160,7 @@ export const useMasaAnalyticsReact = ({
         console.error("fireMintEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp]
+    [logEvent, clientName, clientApp],
   );
 
   return {
