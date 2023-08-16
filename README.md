@@ -1,6 +1,6 @@
-# zkSTB 🍪
+# Masa Analytics React
 
-A customizable, easy-to-use React component for connecting to cookie monster, written in TypeScript.
+A customizable, easy-to-use React component for connecting to Masa Analytics, written in TypeScript.
 
 ## Features
 
@@ -13,6 +13,7 @@ A customizable, easy-to-use React component for connecting to cookie monster, wr
 This package provides built-in support for tracking different types of events:
 
 - [Page Visit Event](#page-visit-event)
+- [Wallet Connect Event](#wallet-connect-event)
 - [Login Event](#login-event)
 - [Mint Event](#mint-event)
 
@@ -28,9 +29,9 @@ These events can be easily integrated into your application to gather insights a
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { firePageViewEvent } = useCookieMonster({
+const { firePageViewEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });
@@ -42,6 +43,32 @@ const page = "https://your-site.example.com/page1";
 void firePageViewEvent(page, user_address);
 ```
 
+### Wallet Connect Event
+
+`fireConnectWalletEvent` function is provided to send a wallet connect event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `connector`: The users wallet connector. e.g "metamask" "walletconnect"
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { firePageViewEvent, fireConnectWalletEvent, fireMintEvent } =
+  useMasaAnalyticsReact({
+    clientApp: 'My App',
+    clientName: 'My Company Name',
+  });
+
+
+// Track a wallet connect event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const connector = "metamask"
+
+void fireConnectWalletEvent(user_address, connector);
+```
+
 ### Login Event
 
 `fireLoginEvent` function is provided to send a login event to your API. It takes the following parameters:
@@ -51,9 +78,9 @@ void firePageViewEvent(page, user_address);
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { fireLoginEvent } = useCookieMonster({
+const { fireLoginEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });
@@ -63,6 +90,8 @@ const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
 
 void fireLoginEvent(user_address);
 ```
+
+
 
 ### Mint Event
 
@@ -78,9 +107,9 @@ void fireLoginEvent(user_address);
 #### Usage
 
 ```typescript
-import { useCookieMonster } from "@masa-finance/zksbt-cookie";
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { fireMintEvent } = useCookieMonster({
+const { fireMintEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
 });
@@ -107,18 +136,18 @@ These events can be used to monitor user interactions with your website, helping
 
 ## Installation
 
-You can install the `@masa-finance/zksbt-cookie` package using either npm or yarn:
+You can install the `@masa-finance/analytics-react` package using either npm or yarn:
 
 ### Using npm
 
 ```bash
-npm install @masa-finance/zksbt-cookie
+npm install @masa-finance/analytics-react
 ```
 
 ### Using yarn
 
 ```bash
-yarn add @masa-finance/zksbt-cookie
+yarn add @masa-finance/analytics-react
 ```
 
 ## Publishing to npm
@@ -162,10 +191,8 @@ We welcome contributions from the community! If you'd like to contribute to this
 3. Make your changes and commit them with clear and concise commit messages.
 4. Create a pull request, explaining the changes you made and their purpose.
 
-For bug reports and feature requests, please [create an issue](https://github.com/masa-finance/zksbt-cookie/issues) on GitHub.
+For bug reports and feature requests, please [create an issue](https://github.com/masa-finance/analytics-react/issues) on GitHub.
 
 ## License
 
-`zksbt-cookie` is released under the [MIT License](LICENSE).
-
-By adding these sections, your README will be more comprehensive and provide all the necessary information for developers to use, contribute to, and understand the licensing of your package.
+`analytics-react` is released under the [MIT License](LICENSE).
