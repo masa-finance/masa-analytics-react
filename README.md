@@ -45,7 +45,7 @@ void firePageViewEvent(page, user_address);
 
 ### Wallet Connect Event
 
-`fireConnectWalletEvent` function is provided to send a wallet connect event to your API. It takes the following parameters:
+`fireConnectWalletEvent` function is provided to send a wallet connect wallet event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
 - `connector`: The users wallet connector. e.g "metamask" "walletconnect"
@@ -55,7 +55,7 @@ void firePageViewEvent(page, user_address);
 ```typescript
 import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 
-const { firePageViewEvent, fireConnectWalletEvent, fireMintEvent } =
+const { fireConnectWalletEvent } =
   useMasaAnalyticsReact({
     clientApp: 'My App',
     clientName: 'My Company Name',
