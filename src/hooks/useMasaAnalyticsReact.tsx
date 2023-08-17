@@ -20,9 +20,7 @@ export const useMasaAnalyticsReact = ({
 }): {
   fireLoginEvent: (user_address: string) => void;
   firePageViewEvent: (page: string, user_address?: string) => void;
-  fireMintEvent: (
-    args: FireMintEventArgs
-  ) => void;
+  fireMintEvent: (args: FireMintEventArgs) => void;
   fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
   const { logEvent } = useEventLogger();
@@ -83,21 +81,19 @@ export const useMasaAnalyticsReact = ({
    * Fire an event once a user tries to mint a token
    */
   const fireMintEvent = useCallback(
-    async (args: FireMintEventArgs) => {
-      const {
-        user_address,
-        token_name,
-        ticker,
-        token_type,
-        network,
-        contract_address,
-        mint_fee,
-        mint_currency,
-        fee_asset,
-        asset_amount,
-        additionalEventData
-      } = args;
-
+    async ({
+      user_address,
+      token_name,
+      ticker,
+      token_type,
+      network,
+      contract_address,
+      mint_fee,
+      mint_currency,
+      fee_asset,
+      asset_amount,
+      additionalEventData,
+    }: FireMintEventArgs) => {
       const event_data: MintEventData = {
         client_app: clientApp,
         client_name: clientName,
