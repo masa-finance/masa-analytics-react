@@ -18,7 +18,7 @@ export const useEventLogger = () => {
       user_address?: string;
       event_data: BaseEventData;
       endpoint: string;
-      client_id?: string
+      client_id?: string;
     }): Promise<Event | undefined> => {
       try {
         const event: Event = {

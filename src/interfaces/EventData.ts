@@ -35,17 +35,17 @@ export interface MintEventData extends BaseEventData {
 }
 
 export interface FireMintEventArgs {
-  user_address: string,
-  network: string,
-  contract_address: string,
-  token_name: string,
-  ticker: string,
-  token_type: string,
-  mint_fee?: string,
-  mint_currency?: string,
-  fee_asset?: string,
-  asset_amount?: string,
-  additionalEventData?: Record<string, unknown>,
+  user_address: string;
+  network: string;
+  contract_address: string;
+  token_name: string;
+  ticker: string;
+  token_type: string;
+  mint_fee?: string;
+  mint_currency?: string;
+  fee_asset?: string;
+  asset_amount?: string;
+  additionalEventData?: Record<string, unknown>;
 }
 
 export interface ConnectWalletEventData extends BaseEventData {
