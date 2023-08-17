@@ -1,12 +1,12 @@
-import { useCallback } from "react";
+import { useCallback } from 'react';
 
 import {
   ConnectWalletEventData,
   LoginEventData,
   MintEventData,
   PageViewEventData,
-} from "../interfaces/EventData";
-import { useEventLogger } from "./useEventLogger";
+} from '../interfaces/EventData';
+import { useEventLogger } from './useEventLogger';
 
 export const useMasaAnalyticsReact = ({
   clientApp,
@@ -28,7 +28,7 @@ export const useMasaAnalyticsReact = ({
     mint_currency?: string,
     fee_asset?: string,
     asset_amount?: string,
-    additionalEventData?: Record<string, unknown>,
+    additionalEventData?: Record<string, unknown>
   ) => void;
   fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
@@ -40,23 +40,23 @@ export const useMasaAnalyticsReact = ({
   const fireLoginEvent = useCallback(
     async (user_address: string) => {
       const event_data: LoginEventData = {
-        description: "User logged in",
+        description: 'User logged in',
         client_app: clientApp,
         client_name: clientName,
       };
 
       try {
         await logEvent({
-          type: "login",
+          type: 'login',
           user_address,
           event_data,
-          endpoint: "events/create",
+          endpoint: 'events/create',
         });
       } catch (error) {
-        console.error("fireLoginEvent():", error);
+        console.error('fireLoginEvent():', error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   /**
@@ -72,16 +72,16 @@ export const useMasaAnalyticsReact = ({
 
       try {
         await logEvent({
-          type: "pageView",
+          type: 'pageView',
           user_address,
           event_data,
-          endpoint: "tracking/track-page-view",
+          endpoint: 'tracking/track-page-view',
         });
       } catch (error) {
-        console.error("firePageViewEvent():", error);
+        console.error('firePageViewEvent():', error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   /**
@@ -99,7 +99,7 @@ export const useMasaAnalyticsReact = ({
       mint_currency?: string,
       fee_asset?: string,
       asset_amount?: string,
-      additionalEventData?: Record<string, unknown>,
+      additionalEventData?: Record<string, unknown>
     ) => {
       const event_data: MintEventData = {
         client_app: clientApp,
@@ -117,20 +117,20 @@ export const useMasaAnalyticsReact = ({
 
       try {
         await logEvent({
-          type: "mint",
+          type: 'mint',
           user_address,
           event_data: {
             ...event_data,
             ...additionalEventData,
           },
 
-          endpoint: "events/create",
+          endpoint: 'events/create',
         });
       } catch (error) {
-        console.error("fireMintEvent():", error);
+        console.error('fireMintEvent():', error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   /**
@@ -151,16 +151,16 @@ export const useMasaAnalyticsReact = ({
 
       try {
         await logEvent({
-          type: "connectWallet",
+          type: 'connectWallet',
           user_address,
           event_data,
-          endpoint: "events/create",
+          endpoint: 'events/create',
         });
       } catch (error) {
-        console.error("fireMintEvent():", error);
+        console.error('fireMintEvent():', error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp]
   );
 
   return {
