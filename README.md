@@ -66,7 +66,7 @@ const { fireConnectWalletEvent } =
 const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
 const connector = "metamask"
 
-void fireConnectWalletEvent(user_address, connector);
+void fireConnectWalletEvent({ user_address: user_address, connector: connector });
 ```
 
 ### Login Event
@@ -88,10 +88,8 @@ const { fireLoginEvent } = useMasaAnalyticsReact({
 // Track a login event
 const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
 
-void fireLoginEvent(user_address);
+void fireLoginEvent({ user_address: user_address });
 ```
-
-
 
 ### Mint Event
 
@@ -112,6 +110,7 @@ import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 const { fireMintEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
 });
 
 // Track a mint event
@@ -122,14 +121,14 @@ const token_name = "My SBT Project";
 const ticker = "MSP";
 const token_type = "SBT";
 
-void fireMintEvent(
-  user_address,
-  network,
-  contract_address,
-  token_name,
-  ticker,
-  token_type
-);
+void fireMintEvent({
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  token_name: token_name,
+  ticker: ticker,
+  token_type: token_type
+  });
 ```
 
 These events can be used to monitor user interactions with your website, helping you make data-driven decisions and improve the user experience.

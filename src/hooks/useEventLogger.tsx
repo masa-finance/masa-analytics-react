@@ -10,6 +10,7 @@ export const useEventLogger = () => {
     async ({
       type,
       user_address,
+      client_id,
       event_data,
       endpoint,
     }: {
@@ -17,11 +18,13 @@ export const useEventLogger = () => {
       user_address?: string;
       event_data: BaseEventData;
       endpoint: string;
+      client_id?: string;
     }): Promise<Event | undefined> => {
       try {
         const event: Event = {
           type,
           user_address,
+          client_id,
           timestamp: new Date(),
           event_data,
         };
@@ -44,12 +47,15 @@ export const useEventLogger = () => {
           // Accepted
           status === 202
         ) {
+          // eslint-disable-next-line no-console
           console.log(`${type} Event logged successfully`);
           return responseData;
         }
+        // eslint-disable-next-line no-console
         console.error(`API error: ${statusText}`);
         return undefined;
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error logging event:', error);
         throw error;
       }

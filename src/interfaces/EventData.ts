@@ -2,6 +2,7 @@ export type EventTypes = 'pageView' | 'login' | 'mint' | 'connectWallet';
 
 export interface Event {
   type: EventTypes;
+  client_id?: string;
   user_address?: string;
   timestamp: Date;
   event_data: BaseEventData | null;
@@ -31,6 +32,20 @@ export interface MintEventData extends BaseEventData {
   mint_currency?: string;
   fee_asset?: string;
   asset_amount?: string;
+}
+
+export interface FireMintEventArgs {
+  user_address: string;
+  network: string;
+  contract_address: string;
+  token_name: string;
+  ticker: string;
+  token_type: string;
+  mint_fee?: string;
+  mint_currency?: string;
+  fee_asset?: string;
+  asset_amount?: string;
+  additionalEventData?: Record<string, unknown>;
 }
 
 export interface ConnectWalletEventData extends BaseEventData {
