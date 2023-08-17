@@ -42,6 +42,7 @@ export const useMasaAnalyticsReact = ({
             endpoint: 'tracking',
           });
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('fireLoginEvent():', error);
         }
       },
@@ -74,6 +75,7 @@ export const useMasaAnalyticsReact = ({
             endpoint: 'tracking',
           });
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('firePageViewEvent():', error);
         }
       },
@@ -124,6 +126,7 @@ export const useMasaAnalyticsReact = ({
             endpoint: 'tracking',
           });
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('fireMintEvent():', error);
         }
       },
@@ -161,6 +164,7 @@ export const useMasaAnalyticsReact = ({
             endpoint: 'tracking',
           });
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('fireMintEvent():', error);
         }
       },

@@ -47,12 +47,15 @@ export const useEventLogger = () => {
           // Accepted
           status === 202
         ) {
+          // eslint-disable-next-line no-console
           console.log(`${type} Event logged successfully`);
           return responseData;
         }
+        // eslint-disable-next-line no-console
         console.error(`API error: ${statusText}`);
         return undefined;
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error logging event:', error);
         throw error;
       }
