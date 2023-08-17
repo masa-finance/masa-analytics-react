@@ -9,8 +9,6 @@ import {
 } from "../interfaces/EventData";
 import { useEventLogger } from "./useEventLogger";
 
-export interface FireMintEvent {}
-
 export const useMasaAnalyticsReact = ({
   clientApp,
   clientName,

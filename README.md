@@ -112,6 +112,7 @@ import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
 const { fireMintEvent } = useMasaAnalyticsReact({
   clientApp: "My App",
   clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
 });
 
 // Track a mint event
@@ -122,14 +123,14 @@ const token_name = "My SBT Project";
 const ticker = "MSP";
 const token_type = "SBT";
 
-void fireMintEvent(
+void fireMintEvent({
   user_address,
   network,
   contract_address,
   token_name,
   ticker,
   token_type
-);
+  });
 ```
 
 These events can be used to monitor user interactions with your website, helping you make data-driven decisions and improve the user experience.
