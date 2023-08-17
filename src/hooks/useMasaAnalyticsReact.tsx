@@ -2,33 +2,28 @@ import { useCallback } from "react";
 
 import {
   ConnectWalletEventData,
+  FireMintEventArgs,
   LoginEventData,
   MintEventData,
   PageViewEventData,
 } from "../interfaces/EventData";
 import { useEventLogger } from "./useEventLogger";
 
+export interface FireMintEvent {}
+
 export const useMasaAnalyticsReact = ({
   clientApp,
   clientName,
+  clientId,
 }: {
   clientApp: string;
   clientName: string;
+  clientId: string;
 }): {
   fireLoginEvent: (user_address: string) => void;
   firePageViewEvent: (page: string, user_address?: string) => void;
   fireMintEvent: (
-    user_address: string,
-    network: string,
-    contract_address: string,
-    token_name: string,
-    ticker: string,
-    token_type: string,
-    mint_fee?: string,
-    mint_currency?: string,
-    fee_asset?: string,
-    asset_amount?: string,
-    additionalEventData?: Record<string, unknown>,
+    args: FireMintEventArgs
   ) => void;
   fireConnectWalletEvent: (user_address: string, wallet_type: string) => void;
 } => {
@@ -48,15 +43,16 @@ export const useMasaAnalyticsReact = ({
       try {
         await logEvent({
           type: "login",
+          client_id: clientId,
           user_address,
           event_data,
-          endpoint: "events/create",
+          endpoint: "tracking",
         });
       } catch (error) {
         console.error("fireLoginEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp, clientId]
   );
 
   /**
@@ -73,34 +69,37 @@ export const useMasaAnalyticsReact = ({
       try {
         await logEvent({
           type: "pageView",
+          client_id: clientId,
           user_address,
           event_data,
-          endpoint: "tracking/track-page-view",
+          endpoint: "tracking",
         });
       } catch (error) {
         console.error("firePageViewEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp, clientId]
   );
 
   /**
    * Fire an event once a user tries to mint a token
    */
   const fireMintEvent = useCallback(
-    async (
-      user_address: string,
-      network: string,
-      contract_address: string,
-      token_name: string,
-      ticker: string,
-      token_type: string,
-      mint_fee?: string,
-      mint_currency?: string,
-      fee_asset?: string,
-      asset_amount?: string,
-      additionalEventData?: Record<string, unknown>,
-    ) => {
+    async (args: FireMintEventArgs) => {
+      const {
+        user_address,
+        token_name,
+        ticker,
+        token_type,
+        network,
+        contract_address,
+        mint_fee,
+        mint_currency,
+        fee_asset,
+        asset_amount,
+        additionalEventData
+      } = args;
+
       const event_data: MintEventData = {
         client_app: clientApp,
         client_name: clientName,
@@ -119,18 +118,19 @@ export const useMasaAnalyticsReact = ({
         await logEvent({
           type: "mint",
           user_address,
+          client_id: clientId,
           event_data: {
             ...event_data,
             ...additionalEventData,
           },
 
-          endpoint: "events/create",
+          endpoint: "tracking",
         });
       } catch (error) {
         console.error("fireMintEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp, clientId]
   );
 
   /**
@@ -153,14 +153,15 @@ export const useMasaAnalyticsReact = ({
         await logEvent({
           type: "connectWallet",
           user_address,
+          client_id: clientId,
           event_data,
-          endpoint: "events/create",
+          endpoint: "tracking",
         });
       } catch (error) {
         console.error("fireMintEvent():", error);
       }
     },
-    [logEvent, clientName, clientApp],
+    [logEvent, clientName, clientApp, clientId]
   );
 
   return {

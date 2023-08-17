@@ -10,6 +10,7 @@ export const useEventLogger = () => {
     async ({
       type,
       user_address,
+      client_id,
       event_data,
       endpoint,
     }: {
@@ -17,11 +18,13 @@ export const useEventLogger = () => {
       user_address?: string;
       event_data: BaseEventData;
       endpoint: string;
+      client_id?: string
     }): Promise<Event | undefined> => {
       try {
         const event: Event = {
           type,
           user_address,
+          client_id,
           timestamp: new Date(),
           event_data,
         };
