@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useCallback } from "react";
+import axios from 'axios';
+import { useCallback } from 'react';
 
-import { API_URL } from "../config";
-import type { BaseEventData, Event } from "../interfaces/EventData";
-import { EventTypes } from "../interfaces/EventData";
+import { API_URL } from '../config';
+import type { BaseEventData, Event } from '../interfaces/EventData';
+import { EventTypes } from '../interfaces/EventData';
 
 export const useEventLogger = () => {
   const logEvent = useCallback(
@@ -35,7 +35,7 @@ export const useEventLogger = () => {
           data: responseData,
         } = await axios.post<Event>(`${API_URL}/${endpoint}`, event, {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
 
@@ -49,15 +49,15 @@ export const useEventLogger = () => {
         ) {
           console.log(`${type} Event logged successfully`);
           return responseData;
-        } else {
-          console.error("API error: " + statusText);
         }
+        console.error(`API error: ${statusText}`);
+        return undefined;
       } catch (error) {
-        console.error("Error logging event:", error);
+        console.error('Error logging event:', error);
         throw error;
       }
     },
-    [],
+    []
   );
 
   return {

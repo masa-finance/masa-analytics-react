@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prettier": "prettier ./src ./webpack.config.js --write",
-    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint": "eslint --config .eslintrc --ext .ts,.tsx ./src",
     "build": "tsc -p tsconfig.json",
     "bundle": "webpack",
     "prepare": "npm run build"
@@ -39,13 +39,14 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
-    "eslint": "^8.44.0",
+    "eslint": "^8.47.0",
+    "eslint-config-masa": "0.0.13",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.1",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",

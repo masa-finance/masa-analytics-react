@@ -1,4 +1,4 @@
-export type EventTypes = "pageView" | "login" | "mint" | "connectWallet";
+export type EventTypes = 'pageView' | 'login' | 'mint' | 'connectWallet';
 
 export interface Event {
   type: EventTypes;
