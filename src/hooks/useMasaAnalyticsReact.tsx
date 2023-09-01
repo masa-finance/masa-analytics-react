@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 
 import {
   ConnectWalletEventData,
-  EventTypes,
   FireMintEventArgs,
   LoginEventData,
   MintEventData,
@@ -178,7 +177,7 @@ export const useMasaAnalyticsReact = ({
      */
     const fireEvent = useCallback(
       async (
-        type: EventTypes,
+        type: string,
         {
           user_address,
           token_name,
