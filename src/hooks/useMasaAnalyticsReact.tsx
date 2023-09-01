@@ -227,6 +227,7 @@ export const useMasaAnalyticsReact = ({
   );
 
     return {
+      fireEvent,
       fireLoginEvent,
       firePageViewEvent,
       fireConnectWalletEvent,
