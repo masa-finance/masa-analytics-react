@@ -171,60 +171,61 @@ export const useMasaAnalyticsReact = ({
       },
       [logEvent, clientName, clientApp, clientId]
     );
-    
 
-
-  /**
-   * Fire a flexible event
-   * It can use any of the EventTypes
-   */
-  const fireEvent = useCallback(
-    async (type: EventTypes, {
-      user_address,
-      token_name,
-      ticker,
-      token_type,
-      network,
-      contract_address,
-      mint_fee,
-      mint_currency,
-      fee_asset,
-      asset_amount,
-      additionalEventData,
-    }: FireMintEventArgs) => {
-      const event_data: MintEventData = {
-        client_app: clientApp,
-        client_name: clientName,
-        token_name,
-        ticker,
-        token_type,
-        network,
-        contract_address,
-        mint_fee,
-        mint_currency,
-        fee_asset,
-        asset_amount,
-      };
-
-      try {
-        await logEvent({
-          type,
+    /**
+     * Fire a flexible event
+     * It can use any of the EventTypes
+     */
+    const fireEvent = useCallback(
+      async (
+        type: EventTypes,
+        {
           user_address,
-          client_id: clientId,
-          event_data: {
-            ...event_data,
-            ...additionalEventData,
-          },
+          token_name,
+          ticker,
+          token_type,
+          network,
+          contract_address,
+          mint_fee,
+          mint_currency,
+          fee_asset,
+          asset_amount,
+          additionalEventData,
+        }: FireMintEventArgs
+      ) => {
+        const event_data: MintEventData = {
+          client_app: clientApp,
+          client_name: clientName,
+          token_name,
+          ticker,
+          token_type,
+          network,
+          contract_address,
+          mint_fee,
+          mint_currency,
+          fee_asset,
+          asset_amount,
+        };
 
-          endpoint: 'tracking',
-        });
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('fireEvent():', error);
-      }
-    },
-    [logEvent, clientName, clientApp, clientId]
-  );
+        try {
+          await logEvent({
+            type,
+            user_address,
+            client_id: clientId,
+            event_data: {
+              ...event_data,
+              ...additionalEventData,
+            },
+
+            endpoint: 'tracking',
+          });
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error('fireEvent():', error);
+        }
+      },
+      [logEvent, clientName, clientApp, clientId]
+    );
 
     return {
       fireEvent,
