@@ -142,9 +142,10 @@ void fireMintEvent({
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `asset_amount`: Asset ammount
+- `network`: The blockchain network of the add liquidity operation.
+- `contract_address`: The address of the contract of the add liquidity operation.
+- `asset_amount`: The amount of the primary asset being added to the liquidity pool.
+- `asset_ticker`: The ticker of the primary asset being added to the liquidiy pool.
 
 #### Usage
 
@@ -168,7 +169,7 @@ void fireEvent( "addLiquidity" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
@@ -178,11 +179,10 @@ void fireEvent( "addLiquidity" , {
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `token_name`: The token name of the contract of the mint operation.
-- `ticker`: The ticker of the contract of the mint operation.
-- `token_type`: The type of the contract of the mint operation.
+- `network`: The blockchain network of the farm operation.
+- `contract_address`: The address of the contract of the farm operation.
+- `asset_amount`: The amount of the primary asset being added to the farming pool.
+- `asset_ticker`: The ticker of the primary asset being added to the farming pool.
 
 #### Usage
 
@@ -205,7 +205,7 @@ void fireEvent( "farm" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
@@ -215,11 +215,10 @@ void fireEvent( "farm" , {
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `token_name`: The token name of the contract of the mint operation.
-- `ticker`: The ticker of the contract of the mint operation.
-- `token_type`: The type of the contract of the mint operation.
+- `network`: The blockchain network of the swap operation.
+- `contract_address`: The address of the contract of the swap operation.
+- `asset_amount`: The amount of the primary asset being swapped.
+- `asset_ticker`: The ticker of the primary asset being swapped.
 
 #### Usage
 
@@ -243,7 +242,7 @@ void fireEvent( "swap" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
@@ -253,11 +252,10 @@ void fireEvent( "swap" , {
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `token_name`: The token name of the contract of the mint operation.
-- `ticker`: The ticker of the contract of the mint operation.
-- `token_type`: The type of the contract of the mint operation.
+- `network`: The blockchain network of the bridge operation.
+- `contract_address`: The address of the contract of the bridge operation.
+- `asset_amount`: The amount of the primary asset being bridged.
+- `asset_ticker`: The ticker of the primary asset being bridged.
 
 #### Usage
 
@@ -291,11 +289,10 @@ void fireEvent( "bridge" , {
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `token_name`: The token name of the contract of the mint operation.
-- `ticker`: The ticker of the contract of the mint operation.
-- `token_type`: The type of the contract of the mint operation.
+- `network`: The blockchain network of the trade operation.
+- `contract_address`: The address of the contract of the trade operation.
+- `asset_amount`: The amount of the primary asset being traded.
+- `asset_ticker`: The ticker of the primary asset being traded.
 
 #### Usage
 
@@ -329,11 +326,10 @@ void fireEvent( "trade" , {
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
 
 - `user_address`: The users wallet address.
-- `network`: The blockchain network of the mint operation.
-- `contract_address`: The address of the contract of the mint operation.
-- `token_name`: The token name of the contract of the mint operation.
-- `ticker`: The ticker of the contract of the mint operation.
-- `token_type`: The type of the contract of the mint operation.
+- `network`: The blockchain network of the claim operation.
+- `contract_address`: The address of the contract of the claim operation.
+- `asset_amount`: The amount of the asset being claimed.
+- `asset_ticker`: The ticker of the asset being claimed.
 
 #### Usage
 
@@ -357,14 +353,47 @@ void fireEvent( "claim" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
 
+### Extending to Include Additional Event Data
+
+You can extend the tracking function to collect additional event data using the `additionalEventData` field as shown in this example. In this example we want to track and log the transaction hash and the protocol fee for making the swap so we can track swap revenue in Masa Analytics. `additionalEventData` can take any information you want to add for future reference or running custom analytics with Masa. 
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a swap event with additional data
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "swap" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount,
+  asset_ticker: asset_ticker,
+  additionalEventData: {
+    transactionHash: "0x83138032f1e7bee64fccd15bbed403f6b875c47641f6b203cd59dfa9b7cf1b4a",
+    fee: "0.12",
+    fee_asset: "ETH"
+  }
+});
+```
 
 
-These events can be used to monitor user interactions with your website, helping you make data-driven decisions and improve the user experience.
+These events can be used to monitor user interactions with your website and app, helping you make data-driven decisions and improve the user experience.
 
 ## Installation
 
