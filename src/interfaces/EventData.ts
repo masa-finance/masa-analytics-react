@@ -1,4 +1,4 @@
-export type EventTypes =
+export type EventType =
   | 'pageView'
   | 'login'
   | 'mint'
@@ -9,7 +9,7 @@ export type EventTypes =
   | 'farm';
 
 export interface Event {
-  type: string;
+  type: EventType;
   client_id?: string;
   user_address?: string;
   timestamp: Date;
