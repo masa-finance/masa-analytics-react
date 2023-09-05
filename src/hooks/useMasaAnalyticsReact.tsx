@@ -197,7 +197,7 @@ export const useMasaAnalyticsReact = ({
           network,
           contract_address,
           asset_amount,
-          asset_ticker
+          asset_ticker,
         };
 
         try {
