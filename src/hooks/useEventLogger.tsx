@@ -2,8 +2,7 @@ import axios from 'axios';
 import { useCallback } from 'react';
 
 import { API_URL } from '../config';
-import type { BaseEventData, Event } from '../interfaces/EventData';
-import { EventTypes } from '../interfaces/EventData';
+import type { BaseEventData, Event, EventType } from '../interfaces/EventData';
 
 export const useEventLogger = () => {
   const logEvent = useCallback(
@@ -14,7 +13,7 @@ export const useEventLogger = () => {
       event_data,
       endpoint,
     }: {
-      type: EventTypes;
+      type: EventType;
       user_address?: string;
       event_data: BaseEventData;
       endpoint: string;

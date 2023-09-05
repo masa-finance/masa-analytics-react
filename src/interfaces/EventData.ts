@@ -1,7 +1,15 @@
-export type EventTypes = 'pageView' | 'login' | 'mint' | 'connectWallet';
+export type EventType =
+  | 'pageView'
+  | 'login'
+  | 'mint'
+  | 'connectWallet'
+  | 'swap'
+  | 'bridge'
+  | 'addLiquidity'
+  | 'farm';
 
 export interface Event {
-  type: EventTypes;
+  type: EventType;
   client_id?: string;
   user_address?: string;
   timestamp: Date;
