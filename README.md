@@ -16,6 +16,12 @@ This package provides built-in support for tracking different types of events:
 - [Wallet Connect Event](#wallet-connect-event)
 - [Login Event](#login-event)
 - [Mint Event](#mint-event)
+- [Add Liquidity Event](#add-liquidity-event)
+- [Farm Event](#farm-event)
+- [Swap Event](#swap-event)
+- [Bridge Event](#bridge-event)
+- [Trade Event](#trade-event)
+- [Claim Event](#claim-event)
 
 These events can be easily integrated into your application to gather insights about user interactions.
 
@@ -130,6 +136,233 @@ void fireMintEvent({
   token_type: token_type
   });
 ```
+
+### Add liquidity Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `asset_amount`: Asset ammount
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track an add liquidity event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "addLiquidity" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+### Farm Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a farm event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+void fireEvent( "farm" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+### Swap Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a swap event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "swap" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+### Bridge Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a bridge event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "bridge" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+### Trade Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a trade event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "trade" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+### Claim Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the mint operation.
+- `contract_address`: The address of the contract of the mint operation.
+- `token_name`: The token name of the contract of the mint operation.
+- `ticker`: The ticker of the contract of the mint operation.
+- `token_type`: The type of the contract of the mint operation.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track a claim event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "claim" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount
+  asset_ticker: asset_ticker
+  });
+```
+
+
 
 These events can be used to monitor user interactions with your website, helping you make data-driven decisions and improve the user experience.
 

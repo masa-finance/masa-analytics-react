@@ -3,6 +3,8 @@ import { useCallback } from 'react';
 import {
   ConnectWalletEventData,
   EventType,
+  FireEventArgs,
+  FireEventData,
   FireMintEventArgs,
   LoginEventData,
   MintEventData,
@@ -181,30 +183,21 @@ export const useMasaAnalyticsReact = ({
         type: EventType,
         {
           user_address,
-          token_name,
-          ticker,
-          token_type,
           network,
           contract_address,
-          mint_fee,
-          mint_currency,
-          fee_asset,
           asset_amount,
+          asset_ticker,
           additionalEventData,
-        }: FireMintEventArgs
+        }: FireEventArgs
       ) => {
-        const event_data: MintEventData = {
+        const event_data: FireEventData = {
           client_app: clientApp,
           client_name: clientName,
-          token_name,
-          ticker,
-          token_type,
+          user_address,
           network,
           contract_address,
-          mint_fee,
-          mint_currency,
-          fee_asset,
           asset_amount,
+          asset_ticker
         };
 
         try {
