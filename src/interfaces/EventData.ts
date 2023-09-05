@@ -6,7 +6,9 @@ export type EventType =
   | 'swap'
   | 'bridge'
   | 'addLiquidity'
-  | 'farm';
+  | 'farm'
+  | 'trade'
+  | 'claim';
 
 export interface Event {
   type: EventType;
@@ -42,6 +44,15 @@ export interface MintEventData extends BaseEventData {
   asset_amount?: string;
 }
 
+export interface FireEventData extends BaseEventData {
+  user_address: string;
+  network: string;
+  contract_address: string;
+  asset_amount: string;
+  asset_ticker: string;
+  additionalEventData?: Record<string, unknown>;
+}
+
 export interface FireMintEventArgs {
   user_address: string;
   network: string;
@@ -53,6 +64,15 @@ export interface FireMintEventArgs {
   mint_currency?: string;
   fee_asset?: string;
   asset_amount?: string;
+  additionalEventData?: Record<string, unknown>;
+}
+
+export interface FireEventArgs {
+  user_address: string;
+  network: string;
+  contract_address: string;
+  asset_amount: string;
+  asset_ticker: string;
   additionalEventData?: Record<string, unknown>;
 }
 
