@@ -281,7 +281,7 @@ void fireEvent( "bridge" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
@@ -319,7 +319,7 @@ void fireEvent( "trade" , {
   user_address: user_address,
   network: network,
   contract_address: contract_address,
-  asset_amount: asset_amount
+  asset_amount: asset_amount,
   asset_ticker: asset_ticker
   });
 ```
