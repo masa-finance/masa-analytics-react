@@ -7,6 +7,7 @@
   "scripts": {
     "prettier": "prettier ./src ./webpack.config.js --write",
     "lint": "eslint --config .eslintrc --ext .ts,.tsx ./src",
+    "start": "yarn compile --watch",
     "compile": "tsc -p tsconfig.json",
     "build": "yarn compile && webpack",
     "prepare": "yarn build",

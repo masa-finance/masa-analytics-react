@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { post } from 'axios';
 import { useCallback } from 'react';
 
 import { API_URL } from '../config';
@@ -32,7 +32,7 @@ export const useEventLogger = () => {
           status,
           statusText,
           data: responseData,
-        } = await axios.post<Event>(`${API_URL}/${endpoint}`, event, {
+        } = await post<Event>(`${API_URL}/${endpoint}`, event, {
           headers: {
             'Content-Type': 'application/json',
           },
