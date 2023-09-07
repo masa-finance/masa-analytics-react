@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/masa-finance/analytics-react#readme",
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "1.4.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
