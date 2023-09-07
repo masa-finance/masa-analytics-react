@@ -1,8 +1,12 @@
-import { post } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { useCallback } from 'react';
 
 import { API_URL } from '../config';
 import type { BaseEventData, Event, EventType } from '../interfaces/EventData';
+
+const client: AxiosInstance = axios.create({
+  baseURL: API_URL,
+});
 
 export const useEventLogger = () => {
   const logEvent = useCallback(
@@ -32,7 +36,7 @@ export const useEventLogger = () => {
           status,
           statusText,
           data: responseData,
-        } = await post<Event>(`${API_URL}/${endpoint}`, event, {
+        } = await client.post<Event>(`/${endpoint}`, event, {
           headers: {
             'Content-Type': 'application/json',
           },

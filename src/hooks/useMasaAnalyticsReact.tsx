@@ -180,7 +180,7 @@ export const useMasaAnalyticsReact = ({
      */
     const fireEvent = useCallback(
       async (
-        type: EventType,
+        type: string,
         {
           user_address,
           network,
@@ -202,7 +202,7 @@ export const useMasaAnalyticsReact = ({
 
         try {
           await logEvent({
-            type,
+            type: type as EventType,
             user_address,
             client_id: clientId,
             event_data: {
