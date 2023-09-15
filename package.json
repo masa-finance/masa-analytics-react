@@ -36,13 +36,13 @@
   },
   "homepage": "https://github.com/masa-finance/analytics-react#readme",
   "dependencies": {
-    "@masa-finance/analytics-sdk": "^0.0.3",
+    "@masa-finance/analytics-sdk": "^0.0.5",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.47.0",
     "eslint-config-masa": "0.0.13",
     "eslint-plugin-react": "^7.33.2",
