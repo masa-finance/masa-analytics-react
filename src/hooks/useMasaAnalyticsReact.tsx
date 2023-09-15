@@ -1,16 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import {
-  ConnectWalletEventData,
-  EventType,
   FireEventArgs,
-  FireEventData,
   FireMintEventArgs,
-  LoginEventData,
-  MintEventData,
-  PageViewEventData,
-} from '../interfaces/EventData';
-import { useEventLogger } from './useEventLogger';
+  MasaAnalytics,
+} from '@masa-finance/analytics-sdk';
 
 export const useMasaAnalyticsReact = ({
   clientApp,
@@ -23,33 +17,22 @@ export const useMasaAnalyticsReact = ({
 }) =>
   // NOTE: return type inferred automatically
   {
-    const { logEvent } = useEventLogger();
+    const masaAnalytics = useMemo(() => {
+      return new MasaAnalytics({
+        clientApp,
+        clientName,
+        clientId,
+      });
+    }, [clientApp, clientName, clientId]);
 
     /**
      * Fire an event once the user logged in
      */
     const fireLoginEvent = useCallback(
       async ({ user_address }: { user_address: string }) => {
-        const event_data: LoginEventData = {
-          description: 'User logged in',
-          client_app: clientApp,
-          client_name: clientName,
-        };
-
-        try {
-          await logEvent({
-            type: 'login',
-            client_id: clientId,
-            user_address,
-            event_data,
-            endpoint: 'tracking',
-          });
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('fireLoginEvent():', error);
-        }
+        await masaAnalytics.fireLoginEvent({ user_address });
       },
-      [logEvent, clientName, clientApp, clientId]
+      [masaAnalytics]
     );
 
     /**
@@ -63,26 +46,12 @@ export const useMasaAnalyticsReact = ({
         page: string;
         user_address?: string;
       }) => {
-        const event_data: PageViewEventData = {
-          client_app: clientApp,
-          client_name: clientName,
+        await masaAnalytics.firePageViewEvent({
           page,
-        };
-
-        try {
-          await logEvent({
-            type: 'pageView',
-            client_id: clientId,
-            user_address,
-            event_data,
-            endpoint: 'tracking',
-          });
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('firePageViewEvent():', error);
-        }
+          user_address,
+        });
       },
-      [logEvent, clientName, clientApp, clientId]
+      [masaAnalytics]
     );
 
     /**
@@ -102,9 +71,8 @@ export const useMasaAnalyticsReact = ({
         asset_amount,
         additionalEventData,
       }: FireMintEventArgs) => {
-        const event_data: MintEventData = {
-          client_app: clientApp,
-          client_name: clientName,
+        await masaAnalytics.fireMintEvent({
+          user_address,
           token_name,
           ticker,
           token_type,
@@ -114,26 +82,10 @@ export const useMasaAnalyticsReact = ({
           mint_currency,
           fee_asset,
           asset_amount,
-        };
-
-        try {
-          await logEvent({
-            type: 'mint',
-            user_address,
-            client_id: clientId,
-            event_data: {
-              ...event_data,
-              ...additionalEventData,
-            },
-
-            endpoint: 'tracking',
-          });
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('fireMintEvent():', error);
-        }
+          additionalEventData,
+        });
       },
-      [logEvent, clientName, clientApp, clientId]
+      [masaAnalytics]
     );
 
     /**
@@ -147,31 +99,12 @@ export const useMasaAnalyticsReact = ({
         user_address: string;
         wallet_type: string;
       }) => {
-        const event_data: ConnectWalletEventData = {
-          client_app: clientApp,
-          client_name: clientName,
+        await masaAnalytics.fireConnectWalletEvent({
+          user_address,
           wallet_type,
-          // token_name,
-          // ticker,
-          // token_type,
-          // network,
-          // contract_address,
-        };
-
-        try {
-          await logEvent({
-            type: 'connectWallet',
-            user_address,
-            client_id: clientId,
-            event_data,
-            endpoint: 'tracking',
-          });
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('fireMintEvent():', error);
-        }
+        });
       },
-      [logEvent, clientName, clientApp, clientId]
+      [masaAnalytics]
     );
 
     /**
@@ -190,34 +123,16 @@ export const useMasaAnalyticsReact = ({
           additionalEventData,
         }: FireEventArgs
       ) => {
-        const event_data: FireEventData = {
-          client_app: clientApp,
-          client_name: clientName,
+        await masaAnalytics.fireEvent(type, {
           user_address,
           network,
           contract_address,
           asset_amount,
           asset_ticker,
-        };
-
-        try {
-          await logEvent({
-            type: type as EventType,
-            user_address,
-            client_id: clientId,
-            event_data: {
-              ...event_data,
-              ...additionalEventData,
-            },
-
-            endpoint: 'tracking',
-          });
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('fireEvent():', error);
-        }
+          additionalEventData,
+        });
       },
-      [logEvent, clientName, clientApp, clientId]
+      [masaAnalytics]
     );
 
     return {
