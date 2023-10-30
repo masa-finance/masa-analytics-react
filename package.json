@@ -1,6 +1,6 @@
 {
   "name": "@masa-finance/analytics-react",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "description": "A customizable, easy-to-use React component for displaying a cookie consent banner on your website, written in TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
