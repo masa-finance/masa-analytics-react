@@ -196,7 +196,7 @@ const { fireEvent } = useMasaAnalyticsReact({
   clientId: '1234-5678-9012-4567'
 });
 
-// Track an add liquidity event
+// Track a remove liquidity event
 const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
 const network = "goerli";
 const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
