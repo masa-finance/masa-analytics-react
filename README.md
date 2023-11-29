@@ -174,6 +174,43 @@ void fireEvent( "addLiquidity" , {
   });
 ```
 
+### Remove liquidity Event
+
+`fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
+
+- `user_address`: The users wallet address.
+- `network`: The blockchain network of the add liquidity operation.
+- `contract_address`: The address of the contract of the add liquidity operation.
+- `asset_amount`: The amount of the primary asset being added to the liquidity pool.
+- `asset_ticker`: The ticker of the primary asset being added to the liquidiy pool.
+
+#### Usage
+
+```typescript
+import { useMasaAnalyticsReact } from "@masa-finance/analytics-react";
+
+const { fireEvent } = useMasaAnalyticsReact({
+  clientApp: "My App",
+  clientName: "My Company Name",
+  clientId: '1234-5678-9012-4567'
+});
+
+// Track an add liquidity event
+const user_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const network = "goerli";
+const contract_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e";
+const asset_amount = "1.20";
+const asset_ticker = "ETH";
+
+void fireEvent( "removeLiquidity" , {
+  user_address: user_address,
+  network: network,
+  contract_address: contract_address,
+  asset_amount: asset_amount,
+  asset_ticker: asset_ticker
+  });
+```
+
 ### Farm Event
 
 `fireEvent` function is provided to send a custom event to your API. It takes the following parameters:
