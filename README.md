@@ -17,6 +17,7 @@ This package provides built-in support for tracking different types of events:
 - [Login Event](#login-event)
 - [Mint Event](#mint-event)
 - [Add Liquidity Event](#add-liquidity-event)
+- [Remove Liquidity Event](#remove-liquidity-event)
 - [Farm Event](#farm-event)
 - [Swap Event](#swap-event)
 - [Bridge Event](#bridge-event)
