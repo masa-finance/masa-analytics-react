@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/masa-finance/analytics-react#readme",
   "dependencies": {
-    "@masa-finance/analytics-sdk": "^0.3.0",
+    "@masa-finance/analytics-sdk": "^0.3.1",
     "react": "^18.2.0"
   },
   "devDependencies": {

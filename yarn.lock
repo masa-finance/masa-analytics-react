@@ -1594,10 +1594,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@masa-finance/analytics-sdk@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.3.0.tgz#9f9c8610734356c9ff6c48ccd64354bdeefbc17b"
-  integrity sha512-W+/HINSA3PcfikqeABPV1203ZTDIlUGH5ghMIywtYvnfJRN6BeDEJiZfv89+4iWv6Vg2Ys63qa3PBZCLoGBBdQ==
+"@masa-finance/analytics-sdk@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.3.1.tgz#968476fe8ed611c0900763a1933fbae5f82490ae"
+  integrity sha512-tqpn+x8lMTPIhSn4Ba+rB+IKen+KtHV549WalNakImLRiswL84jON4N7bjhLmEOgRr5ewapdEHr5sfbptNxWrQ==
   dependencies:
     axios "^1.6.2"
     ethers "5"
