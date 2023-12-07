@@ -1,8 +1,11 @@
 import { useCallback, useMemo } from 'react';
 
 import {
+  FireConnectWalletEventArgs,
   FireEventArgs,
+  FireLoginEventArgs,
   FireMintEventArgs,
+  FirePageViewEventArgs,
   MasaAnalytics,
 } from '@masa-finance/analytics-sdk';
 
@@ -16,6 +19,7 @@ export const useMasaAnalyticsReact = ({
   clientId: string;
 }) =>
   // NOTE: return type inferred automatically
+
   {
     const masaAnalytics = useMemo(() => {
       return new MasaAnalytics({
@@ -29,8 +33,14 @@ export const useMasaAnalyticsReact = ({
      * Fire an event once the user logged in
      */
     const fireLoginEvent = useCallback(
-      async ({ user_address }: { user_address: string }) => {
-        await masaAnalytics.fireLoginEvent({ user_address });
+      async ({
+        user_address,
+        additionalEventData,
+      }: FireLoginEventArgs): Promise<void> => {
+        await masaAnalytics.fireLoginEvent({
+          user_address,
+          additionalEventData,
+        });
       },
       [masaAnalytics]
     );
@@ -39,17 +49,8 @@ export const useMasaAnalyticsReact = ({
      * Fire an event once the user changes the page
      */
     const firePageViewEvent = useCallback(
-      async ({
-        page,
-        user_address,
-      }: {
-        page: string;
-        user_address?: string;
-      }) => {
-        await masaAnalytics.firePageViewEvent({
-          page,
-          user_address,
-        });
+      async (firePageViewEventArgs: FirePageViewEventArgs): Promise<void> => {
+        await masaAnalytics.firePageViewEvent(firePageViewEventArgs);
       },
       [masaAnalytics]
     );
@@ -58,32 +59,8 @@ export const useMasaAnalyticsReact = ({
      * Fire an event once a user tries to mint a token
      */
     const fireMintEvent = useCallback(
-      async ({
-        user_address,
-        token_name,
-        ticker,
-        token_type,
-        network,
-        contract_address,
-        mint_fee,
-        mint_currency,
-        fee_asset,
-        asset_amount,
-        additionalEventData,
-      }: FireMintEventArgs) => {
-        await masaAnalytics.fireMintEvent({
-          user_address,
-          token_name,
-          ticker,
-          token_type,
-          network,
-          contract_address,
-          mint_fee,
-          mint_currency,
-          fee_asset,
-          asset_amount,
-          additionalEventData,
-        });
+      async (fireMintEventArgs: FireMintEventArgs): Promise<void> => {
+        await masaAnalytics.fireMintEvent(fireMintEventArgs);
       },
       [masaAnalytics]
     );
@@ -92,17 +69,10 @@ export const useMasaAnalyticsReact = ({
      * Fire an event once a user tries to mint a token
      */
     const fireConnectWalletEvent = useCallback(
-      async ({
-        user_address,
-        wallet_type,
-      }: {
-        user_address: string;
-        wallet_type: string;
-      }) => {
-        await masaAnalytics.fireConnectWalletEvent({
-          user_address,
-          wallet_type,
-        });
+      async (
+        fireConnectWalletEventArgs: FireConnectWalletEventArgs
+      ): Promise<void> => {
+        await masaAnalytics.fireConnectWalletEvent(fireConnectWalletEventArgs);
       },
       [masaAnalytics]
     );
@@ -112,25 +82,8 @@ export const useMasaAnalyticsReact = ({
      * It can use any of the EventTypes
      */
     const fireEvent = useCallback(
-      async (
-        type: string,
-        {
-          user_address,
-          network,
-          contract_address,
-          asset_amount,
-          asset_ticker,
-          additionalEventData,
-        }: FireEventArgs
-      ) => {
-        await masaAnalytics.fireEvent(type, {
-          user_address,
-          network,
-          contract_address,
-          asset_amount,
-          asset_ticker,
-          additionalEventData,
-        });
+      async (type: string, fireEventArgs: FireEventArgs): Promise<void> => {
+        await masaAnalytics.fireEvent(type, fireEventArgs);
       },
       [masaAnalytics]
     );
