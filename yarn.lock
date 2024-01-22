@@ -479,14 +479,20 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@masa-finance/analytics-sdk@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.3.3.tgz#b545b9a460afd5df0e17481662586ab3682fd557"
-  integrity sha512-upepztkPAUGIC4dohO5J3lTvWxuCbMHh+Ahx4R9FoeMivWlPgWw7CSTbh1WaakN4Iaxppo95Ut/melY9ae5oMw==
+"@masa-finance/analytics-sdk@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.4.1.tgz#6d3d7b3fa7606249bcbe32e206fa1e8bdbe17f4b"
+  integrity sha512-blnWUtU+gyyyuGX7nqi2teygDmFvo2gIrAyI1WcE0ikHXn37z9ptm4ceE2oVc38jQ6scaHeS6ROxSlnUH9OCsA==
   dependencies:
+    "@metamask/detect-provider" "^2.0.0"
     axios "^1.6.5"
     ethers "5"
     uuid "^9.0.1"
+
+"@metamask/detect-provider@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/detect-provider/-/detect-provider-2.0.0.tgz#4bc2795e5e6f7d8b84b2e845058d2f222c99917d"
+  integrity sha512-sFpN+TX13E9fdBDh9lvQeZdJn4qYoRb/6QF2oZZK/Pn559IhCFacPMU1rMuqyXoFQF3JSJfii2l98B87QDPeCQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
