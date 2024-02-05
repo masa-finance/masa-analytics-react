@@ -479,10 +479,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@masa-finance/analytics-sdk@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.3.tgz#828ad80ca702a03db28e5aec9ec77e854ec82eb1"
-  integrity sha512-tmfVbHmBujCdew/zrT62FZhlsAkNr5LqidvEC6MXhx8lYOh4rc8gTulSfhc/JF4NYGFXA9ylRjJMzd5eJTWTCw==
+"@masa-finance/analytics-sdk@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.4.tgz#8e71e37482f4e2a2740ba582ec392571553920cc"
+  integrity sha512-vHd74Tulns0VyxUfujwo773LZIMOqUlfiwChdsVXYE6pw7CzX5tQpUmVw2Ghj4ZnDWRlWiRmLBF97F20PfM0JA==
   dependencies:
     "@metamask/detect-provider" "^2.0.0"
     axios "^1.6.7"
@@ -573,10 +573,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react@^18.2.47":
-  version "18.2.48"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.48.tgz#11df5664642d0bd879c1f58bc1d37205b064e8f1"
-  integrity sha512-qboRCl6Ie70DQQG9hhNREz81jqC1cs9EVNcjQ1AU+jH6NFfSAhVVbrrY/+nSF+Bsk4AOwm9Qa61InvMCyV+H3w==
+"@types/react@^18.2.53":
+  version "18.2.53"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.53.tgz#09c21b4621aaad5fed6a5045b33a7430749d8dc5"
+  integrity sha512-52IHsMDT8qATp9B9zoOyobW8W3/0QhaJQTw1HwRj0UY2yBpCAQ7+S/CqHYQ8niAm3p4ji+rWUQ9UCib0GxQ60w==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
