@@ -6,6 +6,7 @@ import {
   FireLoginEventArgs,
   FireMintEventArgs,
   FirePageViewEventArgs,
+  FireTrackCustomEventArgs,
   MasaAnalytics,
 } from '@masa-finance/analytics-sdk';
 
@@ -78,6 +79,17 @@ export const useMasaAnalyticsReact = ({
     );
 
     /**
+     * Fire an event once a user tries to mint a token
+     */
+    const fireTrackCustomEvent = useCallback(
+      async (
+        fireTrackCustomEventArgs: FireTrackCustomEventArgs
+      ): Promise<void> => {
+        await masaAnalytics.fireTrackCustomEvent(fireTrackCustomEventArgs);
+      },
+      [masaAnalytics]
+    );
+    /**
      * Fire a flexible event
      * It can use any of the EventTypes
      */
@@ -93,6 +105,7 @@ export const useMasaAnalyticsReact = ({
       fireLoginEvent,
       firePageViewEvent,
       fireConnectWalletEvent,
+      fireTrackCustomEvent,
       fireMintEvent,
     };
   };
