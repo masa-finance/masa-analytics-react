@@ -24,11 +24,9 @@ export const useMasaAnalyticsReact = ({
   {
     const masaAnalytics = useMemo(() => {
       return new MasaAnalytics({
-        clientApp,
-        clientName,
         clientId,
       });
-    }, [clientApp, clientName, clientId]);
+    }, [clientId]);
 
     /**
      * Fire an event once the user logged in
