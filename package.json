@@ -47,7 +47,7 @@
     "eslint-config-masa": "^0.0.22",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
     "prettier": "^3.1.0",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.5.1",
