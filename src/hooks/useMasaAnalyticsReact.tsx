@@ -8,6 +8,7 @@ import {
   FirePageViewEventArgs,
   FireTrackCustomEventArgs,
   MasaAnalytics,
+  FireBridgeEventArgs,
 } from '@masa-finance/analytics-sdk';
 
 export const useMasaAnalyticsReact = ({
@@ -77,6 +78,16 @@ export const useMasaAnalyticsReact = ({
     );
 
     /**
+     * Fire an event once a user tries to bridge tokens from one chain to another
+     */
+    const fireBridgeEvent = useCallback(
+      async (fireBridgeEventArgs: FireBridgeEventArgs): Promise<void> => {
+        await masaAnalytics.fireBridgeEvent(fireBridgeEventArgs);
+      },
+      [masaAnalytics]
+    );
+
+    /**
      * Fire an event once a user tries to mint a token
      */
     const fireTrackCustomEvent = useCallback(
@@ -103,6 +114,7 @@ export const useMasaAnalyticsReact = ({
       fireLoginEvent,
       firePageViewEvent,
       fireConnectWalletEvent,
+      fireBridgeEvent,
       fireTrackCustomEvent,
       fireMintEvent,
     };
