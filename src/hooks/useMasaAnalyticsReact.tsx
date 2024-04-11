@@ -21,12 +21,10 @@ export const useMasaAnalyticsReact = ({
   clientId: string;
 }) =>
   // NOTE: return type inferred automatically
-
   {
     const masaAnalytics = useMemo(() => {
       return new MasaAnalytics({
         clientApp,
-        clientName,
         clientId,
       });
     }, [clientApp, clientName, clientId]);
