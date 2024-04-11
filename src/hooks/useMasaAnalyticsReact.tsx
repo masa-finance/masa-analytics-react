@@ -21,14 +21,12 @@ export const useMasaAnalyticsReact = ({
 }) =>
   // NOTE: return type inferred automatically
   {
-    // resolve build by doing this
-    console.log(clientName);
     const masaAnalytics = useMemo(() => {
       return new MasaAnalytics({
         clientApp,
         clientId,
       });
-    }, [clientApp, clientId]);
+    }, [clientApp, clientName, clientId]);
 
     /**
      * Fire an event once the user logged in
