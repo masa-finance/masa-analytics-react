@@ -20,8 +20,9 @@ export const useMasaAnalyticsReact = ({
   clientId: string;
 }) =>
   // NOTE: return type inferred automatically
-
   {
+    // resolve build by doing this
+    console.log(clientName);
     const masaAnalytics = useMemo(() => {
       return new MasaAnalytics({
         clientApp,
