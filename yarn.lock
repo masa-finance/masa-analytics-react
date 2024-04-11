@@ -479,13 +479,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@masa-finance/analytics-sdk@^0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.8.tgz#78be028f663458a97ca0f1ac7a28c915993fa6a6"
-  integrity sha512-4V7sEVYpwlmFnUemJ9LHhJXiAK7LynmEB22WD+8gooTTBj6IzirXZOD57eWp7akmMbwMzX3vbsWjIcJpzIv9/Q==
+"@masa-finance/analytics-sdk@^0.5.13":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.14.tgz#289fb4ffcf9e9d311288b7e80f127c02a6a8c567"
+  integrity sha512-HPy05FrJV+VlPvZSzUObc83kRjMYwLhzPSP8SOx69F9WB2ye2jpBzzmMm5WEOW3X7hIgMAc+Dyt39r07QVxG+g==
   dependencies:
     "@metamask/detect-provider" "^2.0.0"
-    axios "^1.6.7"
+    axios "^1.6.8"
     ethers "5"
     uuid "^9.0.1"
 
@@ -1129,12 +1129,12 @@ axe-core@^4.6.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.8.0.tgz#038c9e586732c791c0d9cecf7ed6434c4e8d497b"
   integrity sha512-ZtlVZobOeDQhb/y2lMK6mznDw7TJHDNcKx5/bbBkFvArIQ5CVFhSI6hWWQnMx9I8cNmNmZ30wpDyOC2E2nvgbQ==
 
-axios@^1.6.7:
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.7.tgz#7b48c2e27c96f9c68a2f8f31e2ab19f59b06b0a7"
-  integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
+axios@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
+  integrity sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==
   dependencies:
-    follow-redirects "^1.15.4"
+    follow-redirects "^1.15.6"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
@@ -2194,7 +2194,7 @@ flatted@^3.2.7:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.15.4:
+follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
