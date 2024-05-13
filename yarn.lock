@@ -480,9 +480,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@masa-finance/analytics-sdk@^0.5.15":
-  version "0.5.15"
-  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.15.tgz#d646ee27a6b4a7b888700a13b3f7bb5a46b3def7"
-  integrity sha512-q6aIrEEGXPEnUWmJxXjWixEZG4b/WQRvAsAQShHd/g1h9ibxwz+jyBDE+1yg7s4b2t8eVitSyHo6WpNwPQnD0g==
+  version "0.5.16"
+  resolved "https://registry.yarnpkg.com/@masa-finance/analytics-sdk/-/analytics-sdk-0.5.16.tgz#ec539c1352b178bcefbe93d746d30f6465b3f9a0"
+  integrity sha512-OydIiEB7JY9MyG2S3XvZpERdLddsdbdrt9T9IzX2zfXXzARtxryXX60DPEEhC4vWdIW/tg+HnUdH+a54g1P89w==
   dependencies:
     "@metamask/detect-provider" "^2.0.0"
     axios "^1.6.8"
